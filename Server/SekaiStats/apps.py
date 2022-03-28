@@ -1,3 +1,8 @@
+"""
+this is more of a config file rather than an app
+"""
+
+
 from django.apps import AppConfig
 
 
