@@ -1,7 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { Button } from '../Button'
-import { Login } from './Login';
 import './style.css';
 
 export class Register extends React.Component{
@@ -33,9 +31,9 @@ export class Register extends React.Component{
                 <div className="alreadyRegistered">
                     Already have an account?
                 </div>
-                <Link to='/Login'>
-                    <Button>Login</Button>
-                </Link>
+                <a href='/Login'>
+                    Login here!
+                </a>
             </div>
     }
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { MenuItems } from "./MenuItems";
 import './Navbar.css'
 import { Button } from '../Button';
@@ -15,9 +14,7 @@ class Navbar extends React.Component {
   render(){
     return(
       <nav className='NavbarItems'>
-        <Router>
-          <Link to='/'><h1 className='navbar-logo'>Sekai Stats</h1></Link>
-        </Router>
+        <a href = '/'><h1 className='navbar-logo'>Sekai Stats</h1></a>
         <ul className={this.state.clicked ? 'nav-menu active' : 'nav-menu'}>
           {MenuItems.map((item, index) => {
             return (
@@ -29,11 +26,9 @@ class Navbar extends React.Component {
             )
           })}
         </ul>
-        <Router>
-          <Link to='/Register'>
-            <Button>Sign Up</Button>
-          </Link>
-        </Router>
+        <a href = '/Register'>
+          <Button>Sign Up</Button>
+        </a>
         
       </nav>
       

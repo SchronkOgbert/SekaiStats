@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button } from '../Button'
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
 export class Login extends React.Component{
     constructor(props) {
@@ -23,9 +22,10 @@ export class Login extends React.Component{
                 <div className="footer">
                     <Button>Login</Button>
                 </div>
-                <Link to='/Register'>
-                        <Button>Register</Button>
-                </Link>
+                Don't have an account?
+                <a href='/Register'>
+                    Register here!
+                </a>
             </div>
     }
 
