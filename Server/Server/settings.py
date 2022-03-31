@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-6osux#nt6sgisp28@gvcr516ofmj5@&rdrkw#^l%ww65-em##h
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0', 'vacabaltata.ddns.net', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -54,7 +54,8 @@ ROOT_URLCONF = 'Server.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
+        'DIRS': [BASE_DIR / 'templates',
+                 BASE_DIR / 'react-sekai/build']
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -117,6 +118,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'react-sekai/build/static'
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
