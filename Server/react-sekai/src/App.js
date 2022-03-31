@@ -1,9 +1,10 @@
 import Navbar from './components/Navbar/Navbar'
 import Background from './components/Background'
-import { Login } from './components/Login';
-import { Register } from './components/Login';
+import { Login } from './components/Login/Login';
+import Register from './components/Login/Register';
+import Homepage from './components/Homepage/Homepage';
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css'
 
 function App() {
@@ -13,8 +14,9 @@ function App() {
       <Background />
       <Router>
         <Routes>
-          <Route path = "/Register" component = {<Register/>}/>
-          <Route path = "/Login" component = {<Login/>}/>
+          <Route path = "/Register" element = { <Register/> }/>
+          <Route path = "/Login" element = {<Login/>}/>
+          <Route path = "/Homepage" element = {<Homepage/>}/>
         </Routes>
       </Router>
     </div>

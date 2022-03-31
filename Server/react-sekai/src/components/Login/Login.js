@@ -20,7 +20,7 @@ export class Login extends React.Component{
                             </div>
                         </div>
                 <div className="footer">
-                    <Button>Login</Button>
+                    <Button buttonSize>Login</Button>
                 </div>
                 Don't have an account?
                 <a href='/Register'>
@@ -28,6 +28,4 @@ export class Login extends React.Component{
                 </a>
             </div>
     }
-
-    
 }
