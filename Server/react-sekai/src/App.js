@@ -13,8 +13,8 @@ function App() {
       <Background />
       <Router>
         <Routes>
-          <Route path = "/Register" element = {<Register/>}/>
-          <Route path = "/Login" element = {<Login/>}/>
+          <Route path = "/Register" component = {<Register/>}/>
+          <Route path = "/Login" component = {<Login/>}/>
         </Routes>
       </Router>
     </div>
