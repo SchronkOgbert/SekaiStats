@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-6osux#nt6sgisp28@gvcr516ofmj5@&rdrkw#^l%ww65-em##h
 DEBUG = True
 
 ALLOWED_HOSTS = ['0.0.0.0', 'vacabaltata.ddns.net', 'localhost', '127.0.0.1']
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 # Application definition
@@ -37,16 +38,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'Server.urls'
@@ -55,8 +59,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [BASE_DIR / 'templates',
-                 BASE_DIR / 'react-sekai/build']
-        ,
+                 BASE_DIR / 'react-sekai/build'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
