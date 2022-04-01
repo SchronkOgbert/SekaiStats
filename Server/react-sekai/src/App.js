@@ -1,11 +1,11 @@
 import Navbar from './components/Navbar/Navbar'
 import Background from './components/Background'
-import { Login } from './components/Login/Login';
+import Login  from './components/Login/Login';
 import Register from './components/Login/Register';
 import Homepage from './components/Homepage/Homepage';
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import './App.css'
+import './App.css';
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
       <Router>
         <Routes>
           <Route path = "/Register" element = { <Register/> }/>
-          <Route path = "/Login" element = {<Login/>}/>
+          <Route path = "/Login" element = { <Login/> }/>
           <Route path = "/Homepage" element = {<Homepage/>}/>
         </Routes>
       </Router>
