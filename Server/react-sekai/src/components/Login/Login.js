@@ -4,7 +4,7 @@ import { useRef, useState, useEffect, useContext } from 'react';
 import axios from '../../api/axios';
 import AuthContext from "../../context/authProvider";
 
-const LOGIN_URL = '/Login';
+const LOGIN_URL = '/Login/Response';
 
 const Login = () => {
 
@@ -31,7 +31,7 @@ const Login = () => {
                 JSON.stringify({ user, pwd }),
                 {
                     headers: { 'Content-Type': 'application/json' },
-                    withCredentials: true
+                    //withCredentials: true
                 }
             );
             console.log(JSON.stringify(response?.data));
@@ -39,7 +39,6 @@ const Login = () => {
             setAuth({ user, pwd, accessToken });
             setUser('');
             setPwd('');
-            setSuccess(true);
         } catch (err) {
             if (!err?.response) {
                 setErrMsg('No Server Response');

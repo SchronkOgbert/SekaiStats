@@ -16,12 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
-import views
+from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name='index.html')),
     path('Register/', TemplateView.as_view(template_name='index.html')),
     path('Login/', TemplateView.as_view(template_name='index.html')),
-    path('Login/INSERT_DESIRE_DNAME', views.check_login) # TODO choose name for this link
+    # TODO choose name for this link
+    path('Login/Response', views.check_login),
+    path('Register/Response', views.register),
+    path('manifest.json/', TemplateView.as_view(template_name='manifest.json')),
 ]

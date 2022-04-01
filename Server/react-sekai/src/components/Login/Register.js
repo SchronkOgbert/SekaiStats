@@ -9,7 +9,7 @@ import Homepage from '../Homepage/Homepage';
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const REGISTER_URL = '/Register'
+const REGISTER_URL = '/Register/Response'
 
 const Register = () => {
     const userRef = useRef();
@@ -50,11 +50,14 @@ const Register = () => {
     const handleClick = async (e) => {
         e.preventDefault();
     try {
+        console.log(JSON.stringify({user, pwd}));
         const response = await axios.post(REGISTER_URL,
             JSON.stringify({ user, pwd }),
             {
                 headers: { 'Content-Type': 'application/json' },
-                withCredentials: true
+                //headers: { 'Access-Control-Allow-Origin' : 'http://localhost:8000/Register'},
+                //headers: { 'Access-Control-Allow-Headers' : 'Authorization'},
+                //withCredentials: true
             }
         );
         setUser('');
@@ -65,7 +68,11 @@ const Register = () => {
             setErrMsg('No Server Response');
         } else if (err.response?.status === 409) {
             setErrMsg('Username Taken');
-        } else {
+        } else if (err.response?.status === 500) {
+            setErrMsg('Internal Server Error');
+        } else if (err.response?.status === 403) {
+            setErrMsg('Forbidden');
+         } else {
             setErrMsg('Registration Failed')
         }
         errRef.current.focus();
@@ -79,7 +86,7 @@ const Register = () => {
             <div className="base-container">
                 <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                     <div className="header">Register</div>
-                    <div onClick={handleClick} className="form">
+                    <div className="form">
                         <div className="form-group">
                             <label htmlFor="username">Username: 
                                 <FontAwesomeIcon icon={faCheck} className={validName ? "valid" : "hide"} />
@@ -153,7 +160,7 @@ const Register = () => {
                         </div>
                     </div>
                     <div className='footer'>
-                        <Button disabled={!validName || !validPwd || !validMatch ? true : false} onClick={handleClick}>Register</Button>
+                        <Button  onClick={handleClick} disabled={!validName || !validPwd || !validMatch ? true : false}>Register</Button>
                     </div>
                     <div className="alreadyRegistered">
                         Already have an account?
