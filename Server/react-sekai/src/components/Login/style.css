@@ -1,10 +1,8 @@
 .base-container {
-  max-width: 800px;
-  min-width: 40%;
-  height: 800px;
+  min-width: 45%;
+  height: 30%;
   margin-left: 50%;
   margin-top: 10rem;
-  margin-bottom: 10rem;
   background-color: rgba(9, 9, 204, 0.479);
   display: flex;
   flex-direction: column;
@@ -22,7 +20,6 @@
   display: flex;
   flex-direction: column;
   align-content: center;
-  width: 60%;
 }
 
 .form-group {
@@ -40,7 +37,7 @@ label {
 
 input {
   margin-top: 6px;
-  min-width: 18em;
+  min-width: fit-content;
   height: 37px;
   padding: 0px;
   font-size: 16px;
@@ -48,7 +45,11 @@ input {
 }
 
 .footer {
-  margin-top: 5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  margin-top: 2em;
   margin-bottom: 10px;
 }
 

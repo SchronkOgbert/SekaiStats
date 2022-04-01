@@ -108,8 +108,7 @@ const Register = () => {
                             <p id="uidnote" className={userFocus && user && !validName ? "instructions" : "offscreen"}>
                                 <FontAwesomeIcon icon={faInfoCircle} />
                                 4 to 24 characters.<br />
-                                Must begin with a letter.<br />
-                                Letters, numbers, underscores, hyphens allowed.
+                                Must begin with a letter.
                             </p>
                         </div>
                         <div className="form-group">
@@ -132,8 +131,8 @@ const Register = () => {
                                 <p id="pwdnote" className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
                                     <FontAwesomeIcon icon={faInfoCircle} />
                                     8 to 24 characters.<br />
-                                    Must include uppercase and lowercase letters, <br/> a number and a special character.<br />
-                                    Allowed special characters: <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
+                                    Must include uppercase<br/>Lowercase letters, <br/> a number and a <br/> special character.<br />
+                                    
                                 </p>
                         </div>
                         <div className="form-group">
@@ -155,20 +154,20 @@ const Register = () => {
                                 />
                                 <p id="confirmnote" className={matchFocus && !validMatch ? "instructions" : "offscreen"}>
                                     <FontAwesomeIcon icon={faInfoCircle} />
-                                    Must match the first password input field.
+                                    Must match the <br/>first password input field.
                                 </p>
                         </div>
                     </div>
                     <div className='footer'>
                         <Button  onClick={handleClick} disabled={!validName || !validPwd || !validMatch ? true : false}>Register</Button>
+                        <div className="alreadyRegistered">
+                            Already have an account?
+                        </div>
+                            <a href='/Login'>
+                                Login here!
+                            </a>
+                        </div>
                     </div>
-                    <div className="alreadyRegistered">
-                        Already have an account?
-                    </div>
-                    <a href='/Login'>
-                        Login here!
-                    </a>
-                </div>
             )}
             </>
         )
