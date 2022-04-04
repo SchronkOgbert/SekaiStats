@@ -10,7 +10,7 @@ _user = DEFAULT_USER
 def get_connection(user, password):
     global _db_connection
     global _user
-    if _db_connection is not None and _user == user:
+    if _db_connection is not None and _user == user and _db_connection.is_connected():
         return _db_connection
     _user = user
     connection = connector.connect(

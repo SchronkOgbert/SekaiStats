@@ -79,6 +79,7 @@ def register(request):
         print('Sql error: ', err)
         return HttpResponse(3)
     for val in db_cursor:
+        # db_conn.commit()
         return HttpResponse(int(val[0]))
 
 
