@@ -1,9 +1,8 @@
-from django import http
+from security import hash_string
 from django.http import HttpResponse
 import mysql.connector
 from . import db_handler
 import json
-# from cryptography.fernet import Fernet
 from hashlib import sha256
 from django.views.decorators.csrf import csrf_exempt
 
@@ -37,7 +36,7 @@ def check_login(request):
         # passwd = fernet.encrypt(str(data['pwd']).encode())
         # print(passwd)
         # db_conn.commit()
-        db_cursor.execute(f"call check_user('{uname}', '{passwd}');")
+        db_cursor.execute(f"call check_user('{uname}', '{hash_string(passwd)}');")
         # print('ran query')
         # db_conn.commit()
     except mysql.connector.Error as err:
@@ -72,13 +71,14 @@ def register(request):
         # passwd = fernet.encrypt(str(data['pwd']).encode())
         # print(passwd)
         # db_conn.commit()
-        db_cursor.execute(f"call register_user('{uname}', '{passwd}');")
+        db_cursor.execute(f"call register_user('{uname}', '{hash_string(passwd)}');")
         # print('ran query')
         # db_conn.commit()
     except mysql.connector.Error as err:
         print('Sql error: ', err)
         return HttpResponse(3)
     for val in db_cursor:
+        # db_conn.commit()
         return HttpResponse(int(val[0]))
 
 
