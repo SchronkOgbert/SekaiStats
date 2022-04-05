@@ -1,14 +1,15 @@
-from security import hash_string
+from .security import hash_string
 from django.http import HttpResponse
 import mysql.connector
 from . import db_handler
 import json
-from hashlib import sha256
+# from hashlib import sha256
 from django.views.decorators.csrf import csrf_exempt
+import re
 
 
-def make_key(username):
-    return sha256((username[:3] + username[2:7]).encode()).digest()
+def escape_string(value: str):
+    return value
 
 
 @csrf_exempt
@@ -36,13 +37,16 @@ def check_login(request):
         # passwd = fernet.encrypt(str(data['pwd']).encode())
         # print(passwd)
         # db_conn.commit()
-        db_cursor.execute(f"call check_user('{uname}', '{hash_string(passwd)}');")
+        print(str(hash_string(passwd, uname))[2:-1][:64])
+        db_cursor.\
+            execute(f"call check_user('{escape_string(uname)}', '{str(hash_string(passwd, uname))[2:-1][:32]}');")
         # print('ran query')
         # db_conn.commit()
     except mysql.connector.Error as err:
         print('Sql error: ', err)
         return HttpResponse(2)
     for val in db_cursor:
+        print(int(val[0]))
         return HttpResponse(int(val[0]))
 
 
@@ -71,7 +75,8 @@ def register(request):
         # passwd = fernet.encrypt(str(data['pwd']).encode())
         # print(passwd)
         # db_conn.commit()
-        db_cursor.execute(f"call register_user('{uname}', '{hash_string(passwd)}');")
+        print(str(hash_string(passwd, uname))[2:-1][:64])
+        db_cursor.execute(f"call register_user('{escape_string(uname)}', '{str(hash_string(passwd, uname))[2:-1][:32]}');")
         # print('ran query')
         # db_conn.commit()
     except mysql.connector.Error as err:
@@ -79,6 +84,8 @@ def register(request):
         return HttpResponse(3)
     for val in db_cursor:
         # db_conn.commit()
+        # db_cursor.reset()
+        print(int(val[0]))
         return HttpResponse(int(val[0]))
 
 

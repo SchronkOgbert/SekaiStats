@@ -13,4 +13,5 @@ def hash_string(value: str, salt: str):
     )
 
 
-print(hash_string('12345', 'saltsaltsalt'))
+# print(str(hash_string('12345\'\'', 'saltsaltsalt'))[2:-1])
+# print(hash_string('12345\'\'', 'saltsaltsalt'))
