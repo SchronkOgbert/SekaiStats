@@ -37,17 +37,19 @@ def check_login(request):
         # passwd = fernet.encrypt(str(data['pwd']).encode())
         # print(passwd)
         # db_conn.commit()
-        print(str(hash_string(passwd, uname))[2:-1][:64])
-        db_cursor.\
-            execute(f"call check_user('{escape_string(uname)}', '{str(hash_string(passwd, uname))[2:-1][:32]}');")
-        # print('ran query')
+        # print(str(hash_string(passwd, uname))[2:-1][:64])
+        print('before query')
+        db_cursor.callproc('check_user', [escape_string(
+            uname), str(hash_string(passwd, uname))[2:-1][:32]])
+        print('ran query')
         # db_conn.commit()
     except mysql.connector.Error as err:
         print('Sql error: ', err)
         return HttpResponse(2)
-    for val in db_cursor:
-        print(int(val[0]))
-        return HttpResponse(int(val[0]))
+    for i in db_cursor.stored_results():
+        results = i.fetchone()
+        print(results[0])
+        return HttpResponse(results[0])
 
 
 @csrf_exempt
@@ -75,20 +77,19 @@ def register(request):
         # passwd = fernet.encrypt(str(data['pwd']).encode())
         # print(passwd)
         # db_conn.commit()
-        print(str(hash_string(passwd, uname))[2:-1][:64])
-        db_cursor.execute(f"call register_user('{escape_string(uname)}', '{str(hash_string(passwd, uname))[2:-1][:32]}');")
+        # print(str(hash_string(passwd, uname))[2:-1][:64])
+        db_cursor.callproc('register_user', [escape_string(
+            uname), str(hash_string(passwd, uname))[2:-1][:32]])
         # print('ran query')
         # db_conn.commit()
     except mysql.connector.Error as err:
         print('Sql error: ', err)
         return HttpResponse(3)
-    for val in db_cursor:
-        # db_conn.commit()
-        # db_cursor.reset()
-        print(int(val[0]))
-        return HttpResponse(int(val[0]))
-
+    for i in db_cursor.stored_results():
+        results = i.fetchone()
+        print(results[0])
+        return HttpResponse(results[0])
 
 # print(check_login('{"usr": "user", "pwd": "password"}'))
 # print(make_key('test'))
-# print(register('{"usr": "testnfdois", "pwd": "76fsd8gfds8fg8s8fsd"}'))
+# print(register('{"user": "testnfdois", "pwd": "76fsd8gfds8fg8s8fsd"}'))
