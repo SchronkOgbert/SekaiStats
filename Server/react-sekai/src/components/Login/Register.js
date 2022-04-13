@@ -4,8 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button } from '../Button';
 import './style.css';
 import axios from '../../api/axios';
-import Homepage from '../Homepage/Homepage';
-
+import { BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
+import Navbar from '../Navbar/Navbar';
+import Background from '../Background';
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -60,28 +61,35 @@ const Register = () => {
                 //withCredentials: true
             }
         );
-        setUser('');
-        setPwd('');
-        setMatchPwd('');
-    } catch (err) {
-        if (!err?.response) {
-            setErrMsg('No Server Response');
-        } else if (err.response?.status === 409) {
-            setErrMsg('Username Taken');
-        } else if (err.response?.status === 500) {
-            setErrMsg('Internal Server Error');
-        } else if (err.response?.status === 403) {
-            setErrMsg('Forbidden');
-         } else {
-            setErrMsg('Registration Failed')
+        console.log(response.data);
+        if (response.data === 1){
+            setUser('');
+            setPwd('');
+            setMatchPwd('');
+            setSuccess(true);
         }
-        errRef.current.focus();
+        else {
+            if (response.data === 2){
+                setErrMsg('Account already exists');
+            }
+            if (response.data === 0){
+                setErrMsg('Failed')
+            }
+            if (response.data === 3){
+                setErrMsg('Another Error')
+            }
+        }
+        console.log(response.data);
+    } catch (err) {
+        console.log(err);
         }
     }
     return (
     <>
+    <Navbar/>
+    <Background/>
         {success ? (
-            <Homepage/> 
+            <Navigate to='/Login'/>
             ) : (
             <div className="base-container">
                 <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
@@ -159,7 +167,7 @@ const Register = () => {
                         </div>
                     </div>
                     <div className='footer'>
-                        <Button  onClick={handleClick} disabled={!validName || !validPwd || !validMatch ? true : false}>Register</Button>
+                        <Button disabled={!validName || !validPwd || !validMatch ? true : false} onClick={handleClick}>Register</Button> 
                         <div className="alreadyRegistered">
                             Already have an account?
                         </div>
@@ -172,6 +180,4 @@ const Register = () => {
             </>
         )
     }
-
 export default Register;
-

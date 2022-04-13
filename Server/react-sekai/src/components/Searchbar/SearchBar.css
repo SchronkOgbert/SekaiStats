@@ -1,0 +1,13 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.searchbar{
+    border: 2px solid #333
+}
+
+#searchIcon{
+    margin-left: 0.5em;
+}

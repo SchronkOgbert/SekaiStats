@@ -3,11 +3,15 @@ import { Button } from '../Button'
 import { useRef, useState, useEffect, useContext } from 'react';
 import axios from '../../api/axios';
 import AuthContext from "../../context/authProvider";
+import Navbar from '../Navbar/Navbar';
+import Background from '../Background';
+import { BrowserRouter as Route, Routes, Router, Navigate} from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 const LOGIN_URL = '/Login/Response';
 
 const Login = () => {
-
+    
     const { setAuth } = useContext(AuthContext);
     const userRef = useRef();
     const errRef = useRef();
@@ -16,6 +20,17 @@ const Login = () => {
     const [pwd, setPwd] = useState('');
     const [errMsg, setErrMsg] = useState('');
     const [success, setSuccess] = useState(false);
+
+    const readCookie = () =>{
+        const user = Cookies.get("user");
+        if(user){
+            setSuccess(true);
+        }
+    }
+    
+    useEffect(() => {
+        readCookie();
+    }, [])
 
     useEffect(() => {
         userRef.current.focus();
@@ -34,22 +49,36 @@ const Login = () => {
                     //withCredentials: true
                 }
             );
-            console.log(JSON.stringify(response?.data));
             const accessToken = response?.data?.accessToken;
             setAuth({ user, pwd, accessToken });
-            setUser('');
-            setPwd('');
-        } catch (err) {
-            if (!err?.response) {
-                setErrMsg('No Server Response');
-            } else if (err.response?.status === 400) {
-                setErrMsg('Missing Username or Password');
-            } else if (err.response?.status === 401) {
-                setErrMsg('Unauthorized');
+            // console.log(JSON.stringify(response?.data));
+            // const accessToken = response?.data?.accessToken;
+            // setAuth({ user, pwd, accessToken });
+            // setUser('');
+            // setPwd('');
+            // if(user == '' || pwd == ''){
+            //     response.data == 0;
+            // }
+            console.log("before checking response");
+            console.log(response.data);
+            if (response.data === 1){
+                Cookies.set("user", "loginTrue");
+                setSuccess(true);
+                setUser('');
+                setPwd('');
             } else {
-                setErrMsg('Login Failed');
+                if (response.data === 0){
+                    setErrMsg('Account does not exist!');
+                }
+                if (response.data === 2){
+                    setErrMsg('Some Error 2');
+                }
+                if (response.data === 3){
+                    setErrMsg('Some Error 3');
+                }
             }
-            errRef.current.focus();
+            } catch (err) {
+                console.log(err);
             }
         }
 
@@ -57,12 +86,14 @@ const Login = () => {
         <>
             {success ? (
                 <section>
-                    <h1>You are logged in!</h1>
+                    <Navigate to='/Homepage'/>
                 </section>
                 ) : (
                     <div>
-                        <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+                        <Navbar/>
+                        <Background />
                         <div className="base-container">
+                        <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                         <div className="header">Login</div>
                                 <div className="form">
                                     <div className="form-group">

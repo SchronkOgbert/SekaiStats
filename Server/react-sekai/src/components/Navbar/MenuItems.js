@@ -1,7 +1,17 @@
 export const MenuItems = [
     {
         title: 'Home',
-        url: '/',
+        url: '/Register',
         cName: 'nav-links'
     }
+    
+]
+
+export const MenuItemsLogged = [
+    {
+        title: 'Home',
+        url: '/Homepage',
+        cName: 'nav-links'
+    }
+    
 ]

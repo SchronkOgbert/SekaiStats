@@ -2,10 +2,10 @@ import React from 'react';
 import { MenuItems } from "./MenuItems";
 import './Navbar.css'
 import { Button } from '../Button';
+import SearchBar from '../Searchbar/SearchBar';
 
 
 class Navbar extends React.Component {
-
   state = { clicked: false }
 
   handleClick = () => {
@@ -14,7 +14,7 @@ class Navbar extends React.Component {
   render(){
     return(
       <nav className='NavbarItems'>
-        <a href = '/'><h1 className='navbar-logo'>Sekai Stats</h1></a>
+        <a href = '/Register'><h1 className='navbar-logo'>Sekai Stats</h1></a>
         <ul className={this.state.clicked ? 'nav-menu active' : 'nav-menu'}>
           {MenuItems.map((item, index) => {
             return (
