@@ -42,7 +42,7 @@ def check_login(request):
         db_cursor.callproc('check_user', [escape_string(
             uname), str(hash_string(passwd, uname))[2:-1][:32]])
         print('ran query')
-        # db_conn.commit()
+        db_conn.commit()
     except mysql.connector.Error as err:
         print('Sql error: ', err)
         return HttpResponse(2)
@@ -81,7 +81,7 @@ def register(request):
         db_cursor.callproc('register_user', [escape_string(
             uname), str(hash_string(passwd, uname))[2:-1][:32]])
         # print('ran query')
-        # db_conn.commit()
+        db_conn.commit()
     except mysql.connector.Error as err:
         print('Sql error: ', err)
         return HttpResponse(3)
