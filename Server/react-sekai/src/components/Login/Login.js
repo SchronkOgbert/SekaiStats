@@ -21,6 +21,7 @@ const Login = () => {
     const [errMsg, setErrMsg] = useState('');
     const [success, setSuccess] = useState(false);
 
+
     const readCookie = () =>{
         const user = Cookies.get("user");
         if(user){
@@ -51,14 +52,6 @@ const Login = () => {
             );
             const accessToken = response?.data?.accessToken;
             setAuth({ user, pwd, accessToken });
-            // console.log(JSON.stringify(response?.data));
-            // const accessToken = response?.data?.accessToken;
-            // setAuth({ user, pwd, accessToken });
-            // setUser('');
-            // setPwd('');
-            // if(user == '' || pwd == ''){
-            //     response.data == 0;
-            // }
             console.log("before checking response");
             console.log(response.data);
             if (response.data === 1){
@@ -106,6 +99,7 @@ const Login = () => {
                                             onChange={(e) => setUser(e.target.value)}
                                             value={user}
                                             required
+                                        
                                         />
                                     </div>
                                         <div className="form-group">

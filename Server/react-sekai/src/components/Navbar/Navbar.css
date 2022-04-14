@@ -19,48 +19,33 @@
   
 }
 
-.fa-react {
-  margin-left: 0.5rem;
-  font-size: 0.5rem;
-}
 
 .nav-menu {
   display: grid;
   grid-template-columns: repeat(5, auto);
-  grid-gap: 10px;
+  grid-gap: 15px;
   list-style: none;
   text-align: center;
   width: 70vw;
   justify-content: end;
-  margin-right: 2rem;
+  margin-right: 3rem;
   
 }
 
+
 .nav-links {
+  display: flex;
   color: black;
+  margin: 3em;
   text-decoration: none;
   padding: 0.5rem 1rem;
+  ;
   
 }
 
 .nav-links:hover {
-  background-color: #6d76f7;
+  background-color: #32b5dd;
   border-radius: 4px;
   transition: all 0.2s ease-out;
   text-decoration: none;
-}
-
-.fa-bars {
-  color: #fff;
-  
-}
-
-.menu-icon {
-  margin: 30px;
-  display: none;
-  
-}
-
-.nav-links-mobile {
-  display: none;
 }

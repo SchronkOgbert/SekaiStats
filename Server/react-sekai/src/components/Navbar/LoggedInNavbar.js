@@ -23,7 +23,7 @@ class LoggedInNavbar extends React.Component {
       <nav className='NavbarItems'>
         <a href = '/Homepage'><h1 className='navbar-logo'>Sekai Stats</h1></a>
         <ul className={this.state.clicked ? 'nav-menu active' : 'nav-menu'}>
-        <SearchBar/>
+        <SearchBar placeholder='search chart...'/>
           {MenuItemsLogged.map((item, index) => {
             return (
               <li key={index}>
