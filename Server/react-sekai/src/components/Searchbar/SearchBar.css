@@ -1,0 +1,10 @@
+.searchbar{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+#searchIcon{
+    margin-left: 0.5em;
+}
