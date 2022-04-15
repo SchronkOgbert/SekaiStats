@@ -4,6 +4,7 @@ import './Navbar.css'
 import { Button } from '../Button';
 import Cookies from 'js-cookie';
 import setSuccess from '../Login/Login';
+import user from '../Login/Login';
 import SearchBar from '../Searchbar/SearchBar';
 
 
@@ -12,11 +13,11 @@ class LoggedInNavbar extends React.Component {
   state = { clicked: false }
   
   handleClick = () => {
-    console.log("Btn clicked");
     Cookies.remove("user");
     setSuccess(false);
     this.setState({ clicked: !this.state.clicked })
   }
+
 
   render(){
     return(

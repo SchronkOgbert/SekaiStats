@@ -15,11 +15,11 @@ const Login = () => {
     const { setAuth } = useContext(AuthContext);
     const userRef = useRef();
     const errRef = useRef();
-
+    
     const [user, setUser] = useState('');
     const [pwd, setPwd] = useState('');
     const [errMsg, setErrMsg] = useState('');
-    const [success, setSuccess] = useState(false);
+    const [success, setSuccess] = useState(false); 
 
 
     const readCookie = () =>{
@@ -57,11 +57,11 @@ const Login = () => {
             if (response.data === 1){
                 Cookies.set("user", "loginTrue");
                 setSuccess(true);
-                setUser('');
-                setPwd('');
+                // setUser('');
+                // setPwd('');
             } else {
                 if (response.data === 0){
-                    setErrMsg('Account does not exist!');
+                    setErrMsg('Wrong Credentials!');
                 }
                 if (response.data === 2){
                     setErrMsg('Some Error 2');
@@ -99,7 +99,6 @@ const Login = () => {
                                             onChange={(e) => setUser(e.target.value)}
                                             value={user}
                                             required
-                                        
                                         />
                                     </div>
                                         <div className="form-group">
