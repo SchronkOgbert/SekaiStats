@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '../Button'
-import { useRef, useState, useEffect, useContext } from 'react';
+import { useRef, useState, useEffect, useContext} from 'react';
 import axios from '../../api/axios';
 import AuthContext from "../../context/authProvider";
 import Navbar from '../Navbar/Navbar';
@@ -11,7 +11,6 @@ import Cookies from 'js-cookie';
 const LOGIN_URL = '/Login/Response';
 
 const Login = () => {
-    
     const { setAuth } = useContext(AuthContext);
     const userRef = useRef();
     const errRef = useRef();
@@ -21,14 +20,13 @@ const Login = () => {
     const [errMsg, setErrMsg] = useState('');
     const [success, setSuccess] = useState(false); 
 
-
-    const readCookie = () =>{
+    const readCookie = () => {
         const user = Cookies.get("user");
         if(user){
             setSuccess(true);
         }
     }
-    
+
     useEffect(() => {
         readCookie();
     }, [])
@@ -43,6 +41,7 @@ const Login = () => {
 
     const handleClick = async (e) => {
         try {
+            Cookies.set('username', user);
             const response = await axios.post(LOGIN_URL,
                 JSON.stringify({ user, pwd }),
                 {
@@ -57,8 +56,8 @@ const Login = () => {
             if (response.data === 1){
                 Cookies.set("user", "loginTrue");
                 setSuccess(true);
-                // setUser('');
-                // setPwd('');
+                setUser('');
+                setPwd('');
             } else {
                 if (response.data === 0){
                     setErrMsg('Wrong Credentials!');

@@ -3,8 +3,9 @@ import Background from '../Background'
 import LoggedInNavbar from '../Navbar/LoggedInNavbar'
 import Chart from 'chart.js/auto'
 import SearchBar from '../Searchbar/SearchBar'
-import Post from './Post';
-import PostContent from './PostContent'
+import Post from './Feed';
+import PostContent from './PostContent';
+import { UserContext } from '../../context/userContext'
 
 
 const ctx = 'myChart';
@@ -50,7 +51,9 @@ const Homepage = () => {
     <>
       <div>
         <Background/>
-        <LoggedInNavbar/>
+        <UserContext.Provider>
+          <LoggedInNavbar/> 
+        </UserContext.Provider>
         <Post/>
       </div>
     </>

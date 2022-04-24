@@ -1,24 +1,13 @@
-* {
-    box-sizing: border-box;
-}
-
-
-.mainContainer{
-    font-family: arial;
-    background-color: #fff;
-    width: 500px;
-    height: 600px;
-    position: relative;
-    margin-top: 5%;
-    margin-left: 42%;
+.postData{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    margin-top: 18%;
+    margin-left: 45%;
+    background-color: rgb(220, 220, 220);
+    border: 2px solid black;
     border-radius: 10px;
-    border: solid black 1px;
-    overflow: hidden
-}
-
-.feedName{
-    font-size: 25px;
-    text-align: center;
-    margin-top: 20px;
 }
 

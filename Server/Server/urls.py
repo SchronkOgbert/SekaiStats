@@ -24,6 +24,7 @@ urlpatterns = [
     path('Register/', TemplateView.as_view(template_name='index.html')),
     path('Login/', TemplateView.as_view(template_name='index.html')),
     path('Homepage/', TemplateView.as_view(template_name='index.html')),
+    path('Post/', TemplateView.as_view(template_name='index.html')),
     path('Login/Response', views.check_login),
     path('Register/Response', views.register),
     path('manifest.json/', TemplateView.as_view(template_name='manifest.json')),

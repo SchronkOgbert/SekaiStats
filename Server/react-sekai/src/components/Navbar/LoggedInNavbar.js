@@ -1,29 +1,31 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { MenuItemsLogged } from "./MenuItems";
-import './Navbar.css'
+import './Navbar.css';
 import { Button } from '../Button';
 import Cookies from 'js-cookie';
 import setSuccess from '../Login/Login';
-import user from '../Login/Login';
 import SearchBar from '../Searchbar/SearchBar';
+import Login from '../Login/Login';
+import UserContext from '../Login/Login';
 
 
-class LoggedInNavbar extends React.Component {
+const LoggedInNavbar = () => {
 
-  state = { clicked: false }
+  const state = { clicked: false }
   
-  handleClick = () => {
+  const handleClick = () => {
     Cookies.remove("user");
     setSuccess(false);
     this.setState({ clicked: !this.state.clicked })
   }
 
+  const username = Cookies.get("username");
 
-  render(){
+  // console.log(user);
     return(
       <nav className='NavbarItems'>
         <a href = '/Homepage'><h1 className='navbar-logo'>Sekai Stats</h1></a>
-        <ul className={this.state.clicked ? 'nav-menu active' : 'nav-menu'}>
+        <ul className={state.clicked ? 'nav-menu active' : 'nav-menu'}>
         <SearchBar placeholder='search chart...'/>
           {MenuItemsLogged.map((item, index) => {
             return (
@@ -35,13 +37,13 @@ class LoggedInNavbar extends React.Component {
             )
           })}
         </ul>
+        <p>User: {username}</p>
         <a href = '/Login'>
-        <Button onClick={this.handleClick}>Log out</Button>
+          <Button onClick={handleClick}>Log out</Button>
         </a>
       </nav>
       
     )
   }
-}
 
 export default LoggedInNavbar;

@@ -6,6 +6,8 @@ import Homepage from './components/Homepage/Homepage';
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import './App.css';
+import Post from './components/Homepage/Post';
+import { UserContext } from './context/userContext';
 
 function App() {
   return (
@@ -13,11 +15,12 @@ function App() {
       <div className='container'>
         <Router>
           <Routes>
-            <Route path = "/" element = {<Navigate to='/Login'/>}/>
-            <Route path = "/Register" element = { <Register/> }/>
-            <Route path = "/Login" element = { <Login/> }/>
-            <Route path = "/Homepage" element = {<Homepage/>}/>
-            <Route path = "/Register/Response" element = {<Homepage/>}/>
+              <Route path = "/" element = {<Navigate to='/Login'/>}/>
+              <Route path = "/Post" element = { <Post />}/>
+              <Route path = "/Register" element = { <Register/> }/>
+              <Route path = "/Login" element = { <Login/> }/>
+              <Route path = "/Homepage" element = {<Homepage/>}/>
+              <Route path = "/Register/Response" element = {<Homepage/>}/>
           </Routes>
         </Router>
       </div>

@@ -7,8 +7,8 @@ const PostContent = (props) => {
               <div className='postName'>
                   {props.postName}
               </div>
-              <div className='postContent'>
-                  {props.postContent}
+              <div className='postUser'>
+                  {props.postUser}
               </div>
           </div>
     );
