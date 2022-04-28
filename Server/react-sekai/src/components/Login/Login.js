@@ -42,6 +42,7 @@ const Login = () => {
     const handleClick = async (e) => {
         try {
             Cookies.set('username', user);
+            setSuccess(true);
             const response = await axios.post(LOGIN_URL,
                 JSON.stringify({ user, pwd }),
                 {
@@ -52,7 +53,7 @@ const Login = () => {
             const accessToken = response?.data?.accessToken;
             setAuth({ user, pwd, accessToken });
             console.log("before checking response");
-            console.log(response.data);
+            console.log(response);
             if (response.data === 1){
                 Cookies.set("user", "loginTrue");
                 setSuccess(true);

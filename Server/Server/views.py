@@ -29,19 +29,14 @@ def check_login(request):
         data = json.load(request)
     except json.JSONDecodeError as err:
         print('JSON error: ', err)
-        return HttpResponse(2)
+        return HttpResponse(3)
     try:
         uname = data['user']
         passwd = data['pwd']
-        # fernet = Fernet()
-        # passwd = fernet.encrypt(str(data['pwd']).encode())
-        # print(passwd)
-        # db_conn.commit()
-        # print(str(hash_string(passwd, uname))[2:-1][:64])
         print('before query')
         db_cursor.callproc('check_user', [escape_string(
             uname), str(hash_string(passwd, uname))[2:-1][:32]])
-        print('ran query')
+        # print('ran query')
         db_conn.commit()
     except mysql.connector.Error as err:
         print('Sql error: ', err)
@@ -73,11 +68,6 @@ def register(request):
     try:
         uname = data['user']
         passwd = data['pwd']
-        # fernet = Fernet()
-        # passwd = fernet.encrypt(str(data['pwd']).encode())
-        # print(passwd)
-        # db_conn.commit()
-        # print(str(hash_string(passwd, uname))[2:-1][:64])
         db_cursor.callproc('register_user', [escape_string(
             uname), str(hash_string(passwd, uname))[2:-1][:32]])
         # print('ran query')
@@ -89,6 +79,71 @@ def register(request):
         results = i.fetchone()
         print(results[0])
         return HttpResponse(results[0])
+
+
+@csrf_exempt
+def search_posts(request):
+    """
+    searches the database for posts that match criteria
+    :param request: json that has the criteria
+    :return: all the posts
+    """
+    try:
+        db_conn = db_handler.get_connection(
+            db_handler.DEFAULT_USER, db_handler.DEFAULT_PASSWORD)
+        db_cursor = db_conn.cursor()
+    except mysql.connector.Error as err:
+        print('Sql error: ', err)
+        return HttpResponse(3)
+    try:
+        data = json.load(request)
+    except json.JSONDecodeError as err:
+        print('JSON error: ', err)
+        return HttpResponse(3)
+    try:
+        keyword = request('keyword')
+        exact_match = bool(request('exact_match'))
+        db_cursor.callproc('search_posts', [keyword, exact_match])
+        db_conn.commit()
+    except mysql.connector.Error as err:
+        print('Sql error: ', err)
+        return HttpResponse(3)
+    results = []
+    for i in db_cursor.stored_results():
+        results.append(str(i.fetchone()))
+    return HttpResponse(results)
+
+
+@csrf_exempt
+def get_post(request):
+    try:
+        db_conn = db_handler.get_connection(
+            db_handler.DEFAULT_USER, db_handler.DEFAULT_PASSWORD)
+        db_cursor = db_conn.cursor()
+    except mysql.connector.Error as err:
+        print('Sql error: ', err)
+        return HttpResponse(3)
+    try:
+        data = json.load(request)
+        if 'postName' not in data or 'postUser' not in data or 'postDate' not in data:
+            raise json.JSONDecodeError
+    except json.JSONDecodeError as err:
+        print('JSON error: ', err)
+        return HttpResponse(3)
+    try:
+        title = data['postName']
+        user = data['postUser']
+        date = data['postDate']
+        db_cursor.callproc('get_post', [title, user, date])
+        db_conn.commit()
+    except mysql.connector.Error as err:
+        print('Sql error: ', err)
+        return HttpResponse(3)
+    for i in db_cursor.stored_results():
+        results = i.fetchone()
+        print(results[0])
+        return HttpResponse(results[0])
+
 
 # print(check_login('{"usr": "user", "pwd": "password"}'))
 # print(make_key('test'))

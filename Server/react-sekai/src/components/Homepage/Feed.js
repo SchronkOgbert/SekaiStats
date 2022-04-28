@@ -2,10 +2,11 @@ import React from 'react'
 import './Feed.css'
 import PostContent from './PostContent'
 import { Button } from '../Button'
-import { useRef, useState, useEffect, useContext } from 'react';
-import axios from '../../api/axios';
-import AuthContext from "../../context/authProvider";
-import Cookies from 'js-cookie';
+import { useRef, useState, useEffect, useContext } from 'react'
+import axios from '../../api/axios'
+import AuthContext from "../../context/authProvider"
+import Cookies from 'js-cookie'
+import api from '../../api/axios'
 
 const PLACEHOLDER_URL = '/Homepage/Post'
 
@@ -13,26 +14,32 @@ const Feed = () => {
 
   const { setAuth } = useContext(AuthContext);
 
+  const [data, setData] = useState([]);
+
   const [postName, setPostName] = useState('');
   
   const [postUser, setPostUser] = useState('');
 
-  const handleClickEvent = async (e) => {
+  const [postDate, setPostDate] = useState('');
+
+  useEffect(() => {
+    getData();
+  }, [])
+
+  const getData = async () => {
+      const response = await axios.get(PLACEHOLDER_URL)
+      setData(response.data)
+      console.log("before checking response")
+      console.log(response)
+    
+  };
+
+  const setData = data.map(el => {
+    return <PostContent postName = {el.postName} postUser = {el.postUser} postDate = {el.postDate}></PostContent>
+  }) 
+
+  const handleClickEvent = () => {
     try {
-        // const response = await axios.post(PLACEHOLDER_URL,
-        //     JSON.stringify({postName, postUser}),
-        //     {
-        //         headers: { 'Content-Type': 'application/json' },
-        //     }
-        // );
-        const response = JSON.stringify("Title", "User");
-
-        const accessToken = response?.data?.accessToken;
-        setAuth({ postName, postUser, accessToken });
-
-        console.log("before checking response");
-        console.log(response.data);
-        
         Cookies.set("postTitle", "post");
         Cookies.set("postUser", "post");
 
@@ -50,7 +57,7 @@ const Feed = () => {
   return (
     <div className='mainContainer'>
         <div className='feedName'>
-        Feed
+          {setData}
         </div>
         <a href="/Post" onClick={handleClickEvent}>
           <PostContent postName="Title" postUser="user"/>
