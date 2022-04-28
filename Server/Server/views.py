@@ -101,8 +101,8 @@ def search_posts(request):
         print('JSON error: ', err)
         return HttpResponse(3)
     try:
-        keyword = request('keyword')
-        exact_match = bool(request('exact_match'))
+        keyword = data['keyword']
+        exact_match = bool(data['exact_match'])
         db_cursor.callproc('search_posts', [keyword, exact_match])
         db_conn.commit()
     except mysql.connector.Error as err:
@@ -131,10 +131,10 @@ def get_post(request):
         print('JSON error: ', err)
         return HttpResponse(3)
     try:
-        title = data['postName']
-        user = data['postUser']
-        date = data['postDate']
-        db_cursor.callproc('get_post', [title, user, date])
+        post_name = data['post_name']
+        post_user = data['post_usr']
+        post_date = data['post_date']
+        db_cursor.callproc('get_post', [post_name, post_user, post_date])
         db_conn.commit()
     except mysql.connector.Error as err:
         print('Sql error: ', err)
