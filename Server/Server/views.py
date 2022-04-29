@@ -110,8 +110,11 @@ def search_posts(request):
         return HttpResponse(3)
     results = []
     for i in db_cursor.stored_results():
-        results.append(str(i.fetchone()))
-    return HttpResponse(results)
+        buffer = i.fetchone()
+        while buffer:
+            results.append(buffer)
+            buffer = i.fetchone()
+    return HttpResponse(json.dumps(results))
 
 
 @csrf_exempt
@@ -139,10 +142,10 @@ def get_post(request):
     except mysql.connector.Error as err:
         print('Sql error: ', err)
         return HttpResponse(3)
+    results = []
     for i in db_cursor.stored_results():
-        results = i.fetchone()
-        print(results[0])
-        return HttpResponse(results[0])
+        results.append(json.dumps(i.fetchone()))
+    return HttpResponse(results)
 
 
 # print(check_login('{"usr": "user", "pwd": "password"}'))
