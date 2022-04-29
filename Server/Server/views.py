@@ -137,8 +137,6 @@ def get_post(request):
         return HttpResponse(3)
     try:
         data = json.load(request)
-        if 'postName' not in data or 'postUser' not in data or 'postDate' not in data:
-            raise json.JSONDecodeError
     except json.JSONDecodeError as err:
         print('JSON error: ', err)
         return HttpResponse(3)
