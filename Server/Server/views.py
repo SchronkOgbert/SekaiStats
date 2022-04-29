@@ -6,6 +6,7 @@ import json
 # from hashlib import sha256
 from django.views.decorators.csrf import csrf_exempt
 import re
+from copy import deepcopy
 
 
 def escape_string(value: str):
@@ -120,7 +121,7 @@ def search_posts(request):
             dict_buffer['postName'] = buffer[0]
             dict_buffer['postUser'] = buffer[1]
             dict_buffer['postDate'] = buffer[2]
-            results.append(dict_buffer)
+            results.append(deepcopy(dict_buffer))
             buffer = i.fetchone()
     return HttpResponse(json.dumps(results))
 
