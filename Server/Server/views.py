@@ -111,8 +111,16 @@ def search_posts(request):
     results = []
     for i in db_cursor.stored_results():
         buffer = i.fetchone()
+        dict_buffer = {
+            'postName': '',
+            'postUser': '',
+            'postDate': ''
+        }
         while buffer:
-            results.append(buffer)
+            dict_buffer['postName'] = buffer[0]
+            dict_buffer['postUser'] = buffer[1]
+            dict_buffer['postDate'] = buffer[2]
+            results.append(dict_buffer)
             buffer = i.fetchone()
     return HttpResponse(json.dumps(results))
 
