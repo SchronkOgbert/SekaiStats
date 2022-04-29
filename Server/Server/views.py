@@ -143,9 +143,9 @@ def get_post(request):
         print('JSON error: ', err)
         return HttpResponse(3)
     try:
-        post_name = data['post_name']
-        post_user = data['post_usr']
-        post_date = data['post_date']
+        post_name = data['postName']
+        post_user = data['postUser']
+        post_date = data['postDate']
         db_cursor.callproc('get_post', [post_name, post_user, post_date])
         db_conn.commit()
     except mysql.connector.Error as err:
