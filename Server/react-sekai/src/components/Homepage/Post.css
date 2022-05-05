@@ -1,13 +1,17 @@
 .postData{
     display: flex;
     flex-direction: column;
+    color: rgb(0, 0, 0);
     justify-content: center;
     align-items: center;
     position: absolute;
-    margin-top: 18%;
-    margin-left: 45%;
-    background-color: rgb(220, 220, 220);
-    border: 2px solid black;
+    width: 1920px;
+    height: 1080px;
     border-radius: 10px;
+    margin-left: 13%;
+    margin-top: 3%;
 }
 
+.text {
+    background-color: rgb(255, 255, 255);
+}

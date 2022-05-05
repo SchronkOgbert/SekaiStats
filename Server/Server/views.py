@@ -1,3 +1,4 @@
+from datetime import datetime
 from .security import hash_string
 from django.http import HttpResponse
 import mysql.connector
@@ -137,21 +138,26 @@ def get_post(request):
         return HttpResponse(3)
     try:
         data = json.load(request)
+        print(data)
     except json.JSONDecodeError as err:
         print('JSON error: ', err)
         return HttpResponse(3)
     try:
         post_name = data['postName']
         post_user = data['postUser']
-        post_date = data['postDate']
-        db_cursor.callproc('get_post', [post_name, post_user, post_date])
+        post_date = datetime.strptime(data['postDate'], '%d/%m/%y')
+        print(post_date)
+        db_cursor.callproc(
+            'get_post', [post_name, post_user, post_date])
         db_conn.commit()
     except mysql.connector.Error as err:
         print('Sql error: ', err)
         return HttpResponse(3)
     results = []
+    print("marinel")
     for i in db_cursor.stored_results():
         results.append(json.dumps(i.fetchone()))
+    print(results)
     return HttpResponse(results)
 
 

@@ -1,0 +1,29 @@
+.feedContainer{
+    display: flex;
+    background-color: #DAE0E6;
+    position: relative;
+    width: 80%;
+    height: 25%;
+    margin-left: 50px;
+    margin-top: 50px;
+    border-radius: 10px;
+    border: solid black 1px;
+    overflow: hidden
+}
+
+.feedName{
+    font-size: 25px;
+    position: absolute;
+    margin-top: 25px;
+    margin-left: 25px;
+    
+}
+
+.feedUser{
+    font-size: 15px;
+    position: absolute;
+    margin-top: 17%;
+    margin-left: 25px;
+    display: inline-block;
+}
+
