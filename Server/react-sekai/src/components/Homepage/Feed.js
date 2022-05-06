@@ -12,7 +12,6 @@ const PLACEHOLDER_URL = "/Homepage/Feed/Get";
 
 const Feed = () => {
   const { setAuth } = useContext(AuthContext);
-
   const [data, setData] = useState([]);
 
   // const [postName, setPostName] = useState(['']);

@@ -1,9 +1,16 @@
 import Cookies from "js-cookie";
 import React from "react";
-import { Link, Router, Route, Routes } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "../../api/axios";
+
+import { BrowserRouter, Link, Router, Route, Routes } from "react-router-dom";
 import "./FeedContent.css";
 
+const PLACEHOLDER_URL = "/Post/Load";
+
 const FeedContent = (props) => {
+  const [data, setData] = useState([]);
+
   Cookies.set("postName", props.feedName);
   Cookies.set("postUser", props.feedUser);
   Cookies.set("postDate", props.feedDate);
@@ -13,16 +20,13 @@ const FeedContent = (props) => {
 
   return (
     <>
-      <Link to={"/Post"}>
+      <a href={"/Post/Load"}>
         <div className="feedContainer">
           <div className="feedName">{props.feedName}</div>
           <div className="feedUser">{props.feedUser}</div>
           <div className="feedDate">{props.feedDate}</div>
         </div>
-      </Link>
-      <Routes>
-        <Route path="/Post/:feedName"></Route>
-      </Routes>
+      </a>
     </>
   );
 };
