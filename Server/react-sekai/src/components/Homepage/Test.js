@@ -14,7 +14,7 @@ const getData = async () => {
     }
   );
 
-  data = response.data.toString();
+  data = response.data;
   console.log(data);
 
   getData();
