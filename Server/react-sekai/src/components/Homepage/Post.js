@@ -3,27 +3,29 @@ import React from "react";
 import Background from "../Background";
 import LoggedInNavbar from "../Navbar/LoggedInNavbar";
 import "./Post.css";
+import { Link, Router, Route, Routes } from "react-router-dom";
 import { Button } from "../Button";
 import { useRef, useState, useEffect, useContext } from "react";
 import axios from "../../api/axios";
 import AuthContext from "../../context/authProvider";
 import api from "../../api/axios";
 import PostContent from "./PostContent";
+import FeedContent from "./FeedContent";
 
-const PLACEHOLDER_URL = "/Homepage/Post/Get";
+const POST_URL = "/Homepage/Post/Get";
+const FEED_URL = "/Homepage/Feed/Get";
+const PLACEHOLDER_URL = "/Post/Load";
 
 const Post = () => {
+  ///aici e problemaaa
   const [data, setData] = useState([]);
-
   const postName = Cookies.get("postName");
   const postUser = Cookies.get("postUser");
   const postDate = Cookies.get("postDate");
 
-  console.log(postName);
-
   useEffect(() => {
-    const getData = async () => {
-      const responseData = await axios.post(
+    const getData = () => {
+      const responseData = axios.post(
         PLACEHOLDER_URL,
         JSON.stringify({ postName, postUser, postDate }),
         {
@@ -34,20 +36,11 @@ const Post = () => {
       console.log(responseData.data);
 
       setData(responseData.data);
+      console.log(data);
     };
 
     getData();
   }, []);
-
-  // const lista = data.map((el) => {
-  //   return (
-  //     <PostContent
-  //       postName={el.postName}
-  //       postUser={el.postUser}
-  //       postDate={el.postDate}
-  //     />
-  //   );
-  //});
 
   return (
     <div>

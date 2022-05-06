@@ -13,6 +13,7 @@ import {
 import "./App.css";
 import Post from "./components/Homepage/Post";
 import { UserContext } from "./context/userContext";
+import Test from "./components/Homepage/Test";
 
 function App() {
   return (
@@ -21,11 +22,12 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<Navigate to="/Login" />} />
-            <Route path="/Post" element={<Post />} />
+            <Route path="/Post/Load" element={<Post />} />
             <Route path="/Register" element={<Register />} />
             <Route path="/Login" element={<Login />} />
-            <Route path="/Homepage/*" element={<Homepage />} />
+            <Route path="/Homepage" element={<Homepage />} />
             <Route path="/Register/Response" element={<Homepage />} />
+            {/* <Route path="/Post/:postName" element={<Test />} /> */}
           </Routes>
         </Router>
       </div>
