@@ -23,6 +23,8 @@ const Post = () => {
   const postUser = Cookies.get("postUser");
   const postDate = Cookies.get("postDate");
 
+  console.log(postName);
+
   useEffect(() => {
     const getData = () => {
       const responseData = axios.post(

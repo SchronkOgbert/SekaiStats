@@ -18,9 +18,17 @@ const FeedContent = (props) => {
   var trimmedName = props.feedName.replace("\n", "").trim();
   console.log(props);
 
+  const handleClick = () => {
+    fetch("/Post/Load", {
+      method: "POST",
+      mode: "cors",
+      body: JSON.stringify(props.feedName, props.feedUser, props.feedDate),
+    });
+  };
+
   return (
     <>
-      <a href={"/Post/Load"}>
+      <a href={"/Post/Load"} onClick={handleClick}>
         <div className="feedContainer">
           <div className="feedName">{props.feedName}</div>
           <div className="feedUser">{props.feedUser}</div>
