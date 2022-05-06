@@ -14,7 +14,7 @@ import FeedContent from "./FeedContent";
 
 const POST_URL = "/Homepage/Post/Get";
 const FEED_URL = "/Homepage/Feed/Get";
-const PLACEHOLDER_URL = "/Post/Load";
+const LOAD_URL = "/Post/Load";
 
 const Post = () => {
   ///aici e problemaaa
@@ -26,21 +26,20 @@ const Post = () => {
   console.log(postName);
 
   useEffect(() => {
-    const getData = () => {
-      const responseData = axios.post(
-        PLACEHOLDER_URL,
+    console.log("marinel");
+
+    const getData = async () => {
+      const responseData = await axios.post(
+        POST_URL,
         JSON.stringify({ postName, postUser, postDate }),
         {
           headers: { "Content-Type": "application/json" },
         }
       );
-
       console.log(responseData.data);
-
       setData(responseData.data);
       console.log(data);
     };
-
     getData();
   }, []);
 

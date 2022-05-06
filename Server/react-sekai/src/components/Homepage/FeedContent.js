@@ -2,6 +2,8 @@ import Cookies from "js-cookie";
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "../../api/axios";
+import { Button } from "../Button";
+import { Navigate } from "react-router";
 
 import { BrowserRouter, Link, Router, Route, Routes } from "react-router-dom";
 import "./FeedContent.css";
@@ -11,10 +13,6 @@ const PLACEHOLDER_URL = "/Post/Load";
 const FeedContent = (props) => {
   const [data, setData] = useState([]);
 
-  Cookies.set("postName", props.feedName);
-  Cookies.set("postUser", props.feedUser);
-  Cookies.set("postDate", props.feedDate);
-
   const postName = props.feedName;
   const postUser = props.feedUser;
   const postDate = props.feedDate;
@@ -22,19 +20,27 @@ const FeedContent = (props) => {
   var trimmedName = props.feedName.replace("\n", "").trim();
   console.log(props);
 
+  // const handleSubmit = () => {
+  //   axios.post(
+  //     PLACEHOLDER_URL,
+  //     JSON.stringify({ postName, postUser, postDate }),
+  //     {
+  //       headers: { "Content-Type": "application/json" },
+  //     }
+  //   );
+  //   <Navigate to="/Post/Load" />;
+  // };
+
   const handleClick = () => {
-    axios.post(
-      PLACEHOLDER_URL,
-      JSON.stringify({ postName, postUser, postDate }),
-      {
-        headers: { "Content-Type": "application/json" },
-      }
-    );
+    console.log("marinel a dat click");
+    Cookies.set("postName", props.feedName);
+    Cookies.set("postUser", props.feedUser);
+    Cookies.set("postDate", props.feedDate);
   };
 
   return (
     <>
-      <a href={"/Post/Load"} onClick={handleClick}>
+      <a href="/Post" onClick={handleClick}>
         <div className="feedContainer">
           <div className="feedName">{props.feedName}</div>
           <div className="feedUser">{props.feedUser}</div>

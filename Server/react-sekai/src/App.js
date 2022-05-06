@@ -22,7 +22,7 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<Navigate to="/Login" />} />
-            <Route path="/Post/Load" element={<Post />} />
+            <Route path="/Post" element={<Post />} />
             <Route path="/Register" element={<Register />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/Homepage" element={<Homepage />} />
