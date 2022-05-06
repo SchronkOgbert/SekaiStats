@@ -15,15 +15,21 @@ const FeedContent = (props) => {
   Cookies.set("postUser", props.feedUser);
   Cookies.set("postDate", props.feedDate);
 
+  const postName = props.feedName;
+  const postUser = props.feedUser;
+  const postDate = props.feedDate;
+
   var trimmedName = props.feedName.replace("\n", "").trim();
   console.log(props);
 
   const handleClick = () => {
-    fetch("/Post/Load", {
-      method: "POST",
-      mode: "cors",
-      body: JSON.stringify(props.feedName, props.feedUser, props.feedDate),
-    });
+    axios.post(
+      PLACEHOLDER_URL,
+      JSON.stringify({ postName, postUser, postDate }),
+      {
+        headers: { "Content-Type": "application/json" },
+      }
+    );
   };
 
   return (
