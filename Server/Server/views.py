@@ -8,6 +8,12 @@ import json
 from django.views.decorators.csrf import csrf_exempt
 import re
 from copy import deepcopy
+from django.shortcuts import render
+from django.shortcuts import redirect
+from django.views.generic import TemplateView
+from django.urls import path
+
+post_urls = []
 
 
 def escape_string(value: str):
@@ -159,6 +165,33 @@ def get_post(request):
         results.append(json.dumps(i.fetchone()))
     print(results)
     return HttpResponse(results)
+
+
+@csrf_exempt
+def go_to_post(request):
+    try:
+        print(f'request: {json.load(request)}')
+        data = json.load(request)
+    except json.JSONDecodeError as err:
+        print('JSON error: ', err)
+        return HttpResponse(2)
+    target = str(data['postName']).replace(' ', '_')
+    if target in post_urls:
+        return redirect('target')
+    post_urls.append(path(target, TemplateView.as_view(template_name='post.html')))
+    try:
+        post_data = json.load(get_post(request))
+    except Exception as e:
+        print(e)
+        return HttpResponse(3)
+    # for url in urlpatterns:
+    #     if(url[''])
+    return render(request, target, post_data)
+
+
+# from urls import urlpatterns
+
+
 
 
 # print(check_login('{"usr": "user", "pwd": "password"}'))
