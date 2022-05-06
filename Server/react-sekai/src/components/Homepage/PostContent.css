@@ -1,24 +1,17 @@
-/* .postName{
-    font-size: 25px;
-    position: absolute;
-    margin-top: 25px;
-    margin-left: 25px;
-    
+.postName{
+    margin-top: 0;
+    font-size: 30px;
+    position: relative;
 }
 
 .postUser{
-    font-size: 15px;
-    position: absolute;
-    margin-top: 17%;
-    margin-left: 25px;
-    display: inline-block;
+    font-size: 20px;
+    position: relative;
 }
 
 .postData{
     font-size: 15px;
     position: absolute;
-    margin-top: 17%;
-    margin-left: 25px;
-    display: inline-block;
+
 }
- */
+

@@ -8,4 +8,11 @@ video {
   left: 0;
   background-color: transparent;
   z-index: -1;
+  background-repeat: initial;
+  
+}
+
+.background {
+  background-repeat: repeat;
+  background-attachment: scroll;
 }

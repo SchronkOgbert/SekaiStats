@@ -51,9 +51,12 @@ const Feed = () => {
   });
 
   return (
-    <div className="mainContainer">
-      <div className="feedName">Feed</div>
-      {lista}
+    <div className="tatalacopii">
+      <div className="mainContainerParent">
+        <div className="mainContainer">
+          <div className="lista">{lista}</div>
+        </div>
+      </div>
     </div>
   );
 };

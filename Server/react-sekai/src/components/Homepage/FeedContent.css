@@ -1,29 +1,41 @@
 .feedContainer{
     display: flex;
-    background-color: #DAE0E6;
+    background: linear-gradient(
+        90deg,
+        #32b5dd,
+        rgb(87, 87, 255) 100%
+      );
     position: relative;
-    width: 80%;
-    height: 25%;
-    margin-left: 50px;
+    width: 50%;
+    height: 5rem;
+    margin-left: 25%;
     margin-top: 50px;
     border-radius: 10px;
     border: solid black 1px;
-    overflow: hidden
+    overflow: hidden;
+    scroll-behavior: auto;
+    color: black;
 }
 
 .feedName{
-    font-size: 25px;
-    position: absolute;
-    margin-top: 25px;
+    font-size: 15px;
+    position: relative;
+    margin-top: 10px;
     margin-left: 25px;
-    
 }
 
 .feedUser{
     font-size: 15px;
     position: absolute;
-    margin-top: 17%;
-    margin-left: 25px;
+    margin-top: 35px;
+    margin-left: 3%;
     display: inline-block;
 }
 
+.feedDate{
+    margin-top: 60px;
+    margin-left: 3%;
+    font-size: 13px;
+    position: absolute;
+    display: inline-block;
+}

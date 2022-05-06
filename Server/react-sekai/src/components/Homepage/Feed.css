@@ -2,23 +2,28 @@
     box-sizing: border-box;
 }
 
+.tatalacopii{
+    padding: 50px;
+}
+.mainContainerParent{
+    padding-left: 5rem;
+    background-color: rgba(255,255,255, 0.6);
+    overflow-y: scroll;
+    overflow-x: hidden;
 
+}
 .mainContainer{
     font-family: arial;
-    background-color: #fff;
-    width: 500px;
-    height: 600px;
-    position: relative;
-    margin-top: 5%;
-    margin-left: 42%;
-    border-radius: 10px;
-    border: solid black 1px;
-    overflow: auto;
+    width: 30%;
+    height: 40em;
+    position: static;
+    margin: auto;
+    width: 100%;
 }
 
-.feedName{
-    font-size: 25px;
-    text-align: center;
-    margin: 30px;
+.lista{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
 }
 

@@ -47,14 +47,18 @@ const Post = () => {
     <div>
       <Background />
       <LoggedInNavbar />
-      <div className="postData">
-        <div className="text">
-          <div className="postName">{data[0]}</div>
-          <div className="postUser">{data[1]}</div>
-          <div className="postDate">{data[4]}</div>
-          <div className="postBody">{data[3]}</div>
+      <div className="tatalapostdata">
+        <div className="postData">
+          <div className="text">
+            <div className="postName">{data[0]}</div>
+            <div className="postUser">{data[1]}</div>
+            <div className="postDate">{data[4]}</div>
+            <div className="postBody">{data[3]}</div>
+          </div>
+          <div className="iframediv">
+            <iframe height="750" src={data[2]}></iframe>
+          </div>
         </div>
-        <iframe height={900} width={1600} src={data[2]}></iframe>
       </div>
     </div>
   );

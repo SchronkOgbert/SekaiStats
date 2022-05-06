@@ -43,8 +43,8 @@ const FeedContent = (props) => {
       <a href="/Post" onClick={handleClick}>
         <div className="feedContainer">
           <div className="feedName">{props.feedName}</div>
-          <div className="feedUser">{props.feedUser}</div>
-          <div className="feedDate">{props.feedDate}</div>
+          <div className="feedUser">User: {props.feedUser}</div>
+          <div className="feedDate">Date: {props.feedDate}</div>
         </div>
       </a>
     </>
