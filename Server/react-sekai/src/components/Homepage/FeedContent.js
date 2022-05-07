@@ -11,25 +11,9 @@ import "./FeedContent.css";
 const PLACEHOLDER_URL = "/Post/Load";
 
 const FeedContent = (props) => {
-  const [data, setData] = useState([]);
-
   const postName = props.feedName;
   const postUser = props.feedUser;
   const postDate = props.feedDate;
-
-  var trimmedName = props.feedName.replace("\n", "").trim();
-  console.log(props);
-
-  // const handleSubmit = () => {
-  //   axios.post(
-  //     PLACEHOLDER_URL,
-  //     JSON.stringify({ postName, postUser, postDate }),
-  //     {
-  //       headers: { "Content-Type": "application/json" },
-  //     }
-  //   );
-  //   <Navigate to="/Post/Load" />;
-  // };
 
   const handleClick = () => {
     console.log("marinel a dat click");
@@ -41,10 +25,13 @@ const FeedContent = (props) => {
   return (
     <>
       <a href="/Post" onClick={handleClick}>
-        <div className="feedContainer">
-          <div className="feedName">{props.feedName}</div>
-          <div className="feedUser">User: {props.feedUser}</div>
-          <div className="feedDate">Date: {props.feedDate}</div>
+        <div className="tatalafeed">
+          <div className="feedContainer">
+            <div className="feedName">{props.feedName}</div>
+            <div className="feedUser">User: {props.feedUser}</div>
+            <div className="feedDate">Date: {props.feedDate}</div>
+            <div className="coolIcon"></div>
+          </div>
         </div>
       </a>
     </>

@@ -12,9 +12,7 @@ const Homepage = () => {
     <>
       <div>
         <Background />
-        <UserContext.Provider>
-          <LoggedInNavbar />
-        </UserContext.Provider>
+        <LoggedInNavbar />
         <Post />
       </div>
     </>

@@ -1,40 +1,50 @@
+.tatalafeed{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+}
+
 .feedContainer{
     display: flex;
     background: linear-gradient(
         90deg,
-        #32b5dd,
-        rgb(87, 87, 255) 100%
+        #82d7f0,
+        rgb(19, 147, 206) 100%
       );
     position: relative;
-    width: 50%;
-    height: 5rem;
-    margin-left: 25%;
+    width: 70%;
+    height: 5.3rem;
     margin-top: 50px;
     border-radius: 10px;
     border: solid black 1px;
     overflow: hidden;
     scroll-behavior: auto;
     color: black;
+    box-shadow: 10px 10px 10px 10px rgba(36, 64, 75, 0.1);
+    cursor: pointer;   
 }
+
 
 .feedName{
     font-size: 15px;
     position: relative;
     margin-top: 10px;
-    margin-left: 25px;
+    margin-left: 13%;
 }
 
 .feedUser{
     font-size: 15px;
     position: absolute;
     margin-top: 35px;
-    margin-left: 3%;
+    margin-left: 13%;
     display: inline-block;
 }
 
 .feedDate{
     margin-top: 60px;
-    margin-left: 3%;
+    margin-left: 13%;
     font-size: 13px;
     position: absolute;
     display: inline-block;

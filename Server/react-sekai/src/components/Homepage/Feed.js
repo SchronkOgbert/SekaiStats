@@ -7,21 +7,16 @@ import axios from "../../api/axios";
 import AuthContext from "../../context/authProvider";
 import Cookies from "js-cookie";
 import api from "../../api/axios";
+import SearchBar from "../Searchbar/SearchBar";
 
 const PLACEHOLDER_URL = "/Homepage/Feed/Get";
 
 const Feed = () => {
   const { setAuth } = useContext(AuthContext);
   const [data, setData] = useState([]);
-
-  // const [postName, setPostName] = useState(['']);
-
-  // const [postUser, setPostUser] = useState('');
-
-  // const [postDate, setPostDate] = useState('');
+  const [keyword, setKeyword] = useState("");
 
   useEffect(() => {
-    const keyword = "";
     const exact_match = false;
 
     const getData = async () => {
@@ -32,29 +27,40 @@ const Feed = () => {
           headers: { "Content-Type": "application/json" },
         }
       );
-      console.log(response.data);
       setData(response.data);
-
-      console.log(data.postName);
     };
     getData();
   }, []);
 
-  const lista = data.map((el) => {
-    return (
-      <FeedContent
-        feedName={el.postName}
-        feedUser={el.postUser}
-        feedDate={el.postDate}
-      />
-    );
-  });
+  const searchFilter = data
+    .filter((el) => {
+      if (keyword == "") {
+        return el;
+      } else if (el.postName.toLowerCase().includes(keyword.toLowerCase())) {
+        return el;
+      }
+    })
+    .map((el) => {
+      return (
+        <FeedContent
+          feedName={el.postName}
+          feedUser={el.postUser}
+          feedDate={el.postDate}
+        />
+      );
+    });
+  const handleChange = (event) => {
+    setKeyword(event.target.value);
+  };
 
   return (
-    <div className="tatalacopii">
-      <div className="mainContainerParent">
-        <div className="mainContainer">
-          <div className="lista">{lista}</div>
+    <div className="buniculutata">
+      <div className="tatalacopii">
+        <div className="mainContainerParent">
+          <div className="mainContainer">
+            <SearchBar placeholder="search chart..." onChange={handleChange} />
+            <div className="lista">{searchFilter}</div>
+          </div>
         </div>
       </div>
     </div>
