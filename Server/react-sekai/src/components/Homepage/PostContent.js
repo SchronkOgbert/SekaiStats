@@ -1,17 +1,23 @@
+import './PostContent.css';
 import React from 'react'
-import './PostContent.css'
 
 const PostContent = (props) => {
-    return (
-          <div className='postContainer'>
-              <div className='postName'>
-                  {props.postName}
-              </div>
-              <div className='postContent'>
-                  {props.postContent}
-              </div>
-          </div>
-    );
-  }
-  
+  return (
+      <div className='postContainer'>
+        <div className='postName'>
+            {props.postName}
+        </div>
+        <div className='postUser'>
+            {props.postUser}
+        </div>
+        <div className='postDate'>
+            {props.postDate}
+        </div>
+        <div className='iframe'>
+            {props.postIframe}
+        </div>
+      </div>
+  )
+}
+
 export default PostContent

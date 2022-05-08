@@ -1,24 +1,38 @@
-* {
-    box-sizing: border-box;
+.tatalapostdata{
+    width: 50%;
+    margin: 0;
 }
 
-
-.mainContainer{
-    font-family: arial;
-    background-color: #fff;
-    width: 500px;
-    height: 600px;
-    position: relative;
-    margin-top: 5%;
-    margin-left: 42%;
-    border-radius: 10px;
-    border: solid black 1px;
-    overflow: hidden
+.text{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.5em;
+    min-height: 7.5em;
+    background: linear-gradient(
+        120deg,
+        #6996f9,
+        rgb(92, 92, 252) 100%
+    );
+    border-radius: 1em;
+}
+.postData{
+    height: 0;
+    padding: 2em;
+    width: 100%;
 }
 
-.feedName{
-    font-size: 25px;
-    text-align: center;
-    margin-top: 20px;
+.iframediv{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1em;
+    width: 100%;
+    border-radius: 1em;
 }
 
+.iframe{
+    height: 400;
+}
+.text {
+    background-color: rgb(255, 255, 255);
+}

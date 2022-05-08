@@ -1,0 +1,21 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{{ postName }}</title>
+</head>
+<body>
+<div>
+    <iframe>{{ navbar }}</iframe>
+    <iframe>{{ lo }}</iframe>
+    <div className="postData">
+        <div className="text">
+            <div className="postName">{{ postName }}</div>
+            <div className="postUser">{{ postUser }}</div>
+            <div className="postDate">{{ postDate }}</div>
+            <div className="postBody">{{ postBody }}</div>
+        </div>
+        <iframe height={900} width={1600} src={{ postURL }}></iframe>
+    </div>
+</div>
+</body>
+</html>
