@@ -1,3 +1,8 @@
+*{
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+}
+
+
 .tatalafeed{
     display: flex;
     align-items: center;
@@ -18,7 +23,7 @@
     height: 5.3rem;
     margin-top: 50px;
     border-radius: 10px;
-    border: solid black 1px;
+    border: solid rgb(0, 0, 0) 1px;
     overflow: hidden;
     scroll-behavior: auto;
     color: black;

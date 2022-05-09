@@ -58,7 +58,12 @@ const Feed = () => {
       <div className="tatalacopii">
         <div className="mainContainerParent">
           <div className="mainContainer">
-            <SearchBar placeholder="search chart..." onChange={handleChange} />
+            <div className="searchBar">
+              <SearchBar
+                placeholder="search chart..."
+                onChange={handleChange}
+              />
+            </div>
             <div className="lista">{searchFilter}</div>
           </div>
         </div>

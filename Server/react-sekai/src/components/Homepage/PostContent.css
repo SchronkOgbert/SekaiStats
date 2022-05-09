@@ -1,6 +1,10 @@
+*{
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+}
+
 .postName{
     margin-top: 0;
-    font-size: 30px;
+    font-size: 25px;
     position: relative;
 }
 
@@ -12,6 +16,5 @@
 .postData{
     font-size: 15px;
     position: absolute;
-
 }
 
