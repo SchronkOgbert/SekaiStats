@@ -15,6 +15,8 @@ const Feed = () => {
   const { setAuth } = useContext(AuthContext);
   const [data, setData] = useState([]);
   const [keyword, setKeyword] = useState("");
+  const [filterKeyword, setFilterKeyword] = useState("");
+  const [checked, setChecked] = useState(false);
 
   useEffect(() => {
     const exact_match = false;
@@ -49,21 +51,80 @@ const Feed = () => {
         />
       );
     });
+
+  const financialFilter = () => {
+    setFilterKeyword("financial");
+    data
+      .filter((el) => {
+        if (filterKeyword == "") {
+          return el;
+        } else if (el.postType.toLowerCase() == filterKeyword.toLowerCase()) {
+          return el;
+        }
+      })
+      .map((el) => {
+        return (
+          <FeedContent
+            feedName={el.postName}
+            feedUser={el.postUser}
+            feedDate={el.postDate}
+          />
+        );
+      });
+  };
+
   const handleChange = (event) => {
     setKeyword(event.target.value);
+  };
+
+  const handleCheck = () => {
+    setChecked(true);
+    if (checked) {
+      setChecked(false);
+    }
   };
 
   return (
     <div className="buniculutata">
       <div className="tatalacopii">
         <div className="mainContainerParent">
-          <div className="mainContainer">
+          <div className="mainFilterContainer">
             <div className="searchBar">
               <SearchBar
                 placeholder="search chart..."
                 onChange={handleChange}
               />
             </div>
+            <div className="checkboxList">
+              <form>
+                <label>
+                  <input
+                    type="checkbox"
+                    id="checkboxID"
+                    onClick={handleCheck}
+                  />
+                  Financial
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    id="checkboxID"
+                    onClick={handleCheck}
+                  />
+                  Demographic
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    id="checkboxID"
+                    onClick={handleCheck}
+                  />
+                  Geographic
+                </label>
+              </form>
+            </div>
+          </div>
+          <div className="mainFeedContainer">
             <div className="lista">{searchFilter}</div>
           </div>
         </div>

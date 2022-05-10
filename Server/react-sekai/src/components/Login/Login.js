@@ -46,6 +46,7 @@ const Login = () => {
 
   const handleClick = async (e) => {
     try {
+      setSuccess(true);
       Cookies.set("username", user);
       const response = await axios.post(
         LOGIN_URL,
