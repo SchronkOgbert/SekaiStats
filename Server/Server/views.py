@@ -111,7 +111,8 @@ def search_posts(request):
     try:
         keyword = data['keyword']
         exact_match = bool(data['exact_match'])
-        db_cursor.callproc('search_posts', [keyword, exact_match])
+        category = data['category']
+        db_cursor.callproc('search_posts', [keyword, category, exact_match])
         db_conn.commit()
     except mysql.connector.Error as err:
         print('Sql error: ', err)
@@ -160,7 +161,6 @@ def get_post(request):
         print('Sql error: ', err)
         return HttpResponse(3)
     results = []
-    print("marinel")
     for i in db_cursor.stored_results():
         results.append(json.dumps(i.fetchone()))
     print(results)
