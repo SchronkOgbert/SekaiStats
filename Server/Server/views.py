@@ -123,7 +123,7 @@ def search_posts(request):
         dict_buffer = {
             'postName': '',
             'postUser': '',
-            'postDate': ''
+            'postDate': '',
         }
         while buffer:
             dict_buffer['postName'] = buffer[0]
@@ -178,7 +178,8 @@ def go_to_post(request):
     target = str(data['postName']).replace(' ', '_')
     if target in post_urls:
         return redirect('target')
-    post_urls.append(path(target, TemplateView.as_view(template_name='post.html')))
+    post_urls.append(
+        path(target, TemplateView.as_view(template_name='post.html')))
     try:
         post_data = json.load(get_post(request))
     except Exception as e:
@@ -190,8 +191,6 @@ def go_to_post(request):
 
 
 # from urls import urlpatterns
-
-
 
 
 # print(check_login('{"usr": "user", "pwd": "password"}'))

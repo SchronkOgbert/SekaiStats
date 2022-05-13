@@ -15,8 +15,11 @@ const Feed = () => {
   const { setAuth } = useContext(AuthContext);
   const [data, setData] = useState([]);
   const [keyword, setKeyword] = useState("");
-  const [filterKeyword, setFilterKeyword] = useState("");
-  const [checked, setChecked] = useState(false);
+  const [category, setCategory] = useState("");
+
+  const [financialChecked, setFinancialChecked] = useState(false);
+  const [demographicChecked, setDemographicChecked] = useState(false);
+  const [geographicChecked, setGeographicChecked] = useState(false);
 
   useEffect(() => {
     const exact_match = false;
@@ -24,15 +27,16 @@ const Feed = () => {
     const getData = async () => {
       const response = await axios.post(
         PLACEHOLDER_URL,
-        JSON.stringify({ keyword, exact_match }),
+        JSON.stringify({ keyword, category, exact_match }),
         {
           headers: { "Content-Type": "application/json" },
         }
       );
       setData(response.data);
+      console.log(response.data)
     };
     getData();
-  }, []);
+  }, [category, keyword]);
 
   const searchFilter = data
     .filter((el) => {
@@ -52,37 +56,97 @@ const Feed = () => {
       );
     });
 
-  const financialFilter = () => {
-    setFilterKeyword("financial");
+  const financialFilter =
     data
-      .filter((el) => {
-        if (filterKeyword == "") {
-          return el;
-        } else if (el.postType.toLowerCase() == filterKeyword.toLowerCase()) {
-          return el;
-        }
-      })
-      .map((el) => {
-        return (
-          <FeedContent
-            feedName={el.postName}
-            feedUser={el.postUser}
-            feedDate={el.postDate}
-          />
-        );
-      });
-  };
+    .filter((el) => {
+      if (category === "") {
+        return el;
+      } 
+      else if (category === "financial") {
+        return el;
+      }
+    })
+    .map((el) => {
+      return (
+        <FeedContent
+          feedName={el.postName}
+          feedUser={el.postUser}
+          feedDate={el.postDate}
+        />
+      );
+    });
+
+  const demographicFilter =
+  data
+  .filter((el) => {
+    if (category === "") {
+      return el;
+    } 
+    else if (category === "demographic") {
+      return el;
+    }
+  })
+  .map((el) => {
+    return (
+      <FeedContent
+        feedName={el.postName}
+        feedUser={el.postUser}
+        feedDate={el.postDate}
+      />
+    );
+  });
+
+  const geographicFilter =
+  data
+  .filter((el) => {
+    if (category === "") {
+      return el;
+    } 
+    else if (category === "geographic") {
+      return el;
+    }
+  })
+  .map((el) => {
+    return (
+      <FeedContent
+        feedName={el.postName}
+        feedUser={el.postUser}
+        feedDate={el.postDate}
+      />
+    );
+  });
 
   const handleChange = (event) => {
     setKeyword(event.target.value);
   };
 
-  const handleCheck = () => {
-    setChecked(true);
-    if (checked) {
-      setChecked(false);
+  const handleFinancialCheck = () => {
+    setCategory("")
+    setFinancialChecked(false);
+    if (!financialChecked) {
+      setCategory("financial");
+      setFinancialChecked(true);
     }
   };
+
+  const handleDemographicCheck = () => {
+    setCategory("")
+    setDemographicChecked(false);
+    if (!demographicChecked) {
+      setCategory("demographic");
+      setDemographicChecked(true);
+    }
+  };
+
+  const handleGeographicCheck = () => {
+    setCategory("")
+    setGeographicChecked(false);
+    if (!geographicChecked) {
+      setCategory("geographic");
+      setGeographicChecked(true);
+    }
+  };
+
 
   return (
     <div className="buniculutata">
@@ -101,7 +165,7 @@ const Feed = () => {
                   <input
                     type="checkbox"
                     id="checkboxID"
-                    onClick={handleCheck}
+                    onClick={handleFinancialCheck}
                   />
                   Financial
                 </label>
@@ -109,7 +173,7 @@ const Feed = () => {
                   <input
                     type="checkbox"
                     id="checkboxID"
-                    onClick={handleCheck}
+                    onClick={handleDemographicCheck}
                   />
                   Demographic
                 </label>
@@ -117,7 +181,7 @@ const Feed = () => {
                   <input
                     type="checkbox"
                     id="checkboxID"
-                    onClick={handleCheck}
+                    onClick={handleGeographicCheck}
                   />
                   Geographic
                 </label>
@@ -125,7 +189,7 @@ const Feed = () => {
             </div>
           </div>
           <div className="mainFeedContainer">
-            <div className="lista">{searchFilter}</div>
+            <div className="lista">{(financialChecked) ? financialFilter : searchFilter}</div>
           </div>
         </div>
       </div>
