@@ -111,7 +111,7 @@ def search_posts(request):
     try:
         keyword = data['keyword']
         exact_match = bool(data['exact_match'])
-        category = data['category']
+        category = json.dumps(data['categories'])
         db_cursor.callproc('search_posts', [keyword, category, exact_match])
         db_conn.commit()
     except mysql.connector.Error as err:
