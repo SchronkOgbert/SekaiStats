@@ -16,12 +16,13 @@ const Feed = () => {
   const [data, setData] = useState([]);
   const [keyword, setKeyword] = useState("");
   const [category, setCategory] = useState("");
+  const [categories, setCategories] = useState([]);
 
   const [financialChecked, setFinancialChecked] = useState(false);
   const [demographicChecked, setDemographicChecked] = useState(false);
   const [geographicChecked, setGeographicChecked] = useState(false);
 
-  let categories = [];
+  // let categories = [];
 
   useEffect(() => {
     const exact_match = false;
@@ -44,7 +45,7 @@ const Feed = () => {
       console.log(response.data)
     };
     getData();
-  }, []);
+  }, [keyword, categories]);
 
   const searchFilter = data
     .filter((el) => {
@@ -129,29 +130,28 @@ const Feed = () => {
   };
 
   const handleFinancialCheck = () => {
-    categories.pop("Financial");
-    console.log(categories);
     setFinancialChecked(false);
+    setCategories("");
     if (!financialChecked) {
-      categories.push("Financial")
+      setCategories("Financial");
       setFinancialChecked(true);
     }
   };
 
   const handleDemographicCheck = () => {
-    categories.pop("Demographic");
     setDemographicChecked(false);
+    setCategories("");
     if (!demographicChecked) {
-      categories.push("Demographic")
+      setCategories("Demographic");
       setDemographicChecked(true);
     }
   };
 
   const handleGeographicCheck = () => {
-    categories.pop("Geographic");
     setGeographicChecked(false);
+    setCategories("");
     if (!geographicChecked) {
-      categories.push("Geographic")
+      setCategories("Geographic");
       setGeographicChecked(true);
     }
   };
