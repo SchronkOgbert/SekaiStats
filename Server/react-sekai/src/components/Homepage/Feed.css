@@ -21,6 +21,7 @@
     border-radius: 10px;
     scrollbar-width: none;
     box-shadow: 10px 10px 10px 10px rgba(36, 64, 75, 0.1);
+
 }
 
 
@@ -46,6 +47,11 @@ label{
     margin-top: 15px;
 }
 
+.stickyDiv{
+    position: sticky;
+    top: 0;
+}
+
 #checkboxID{
     margin-top: 0;
     margin-right: 10px;
@@ -59,7 +65,7 @@ label{
     .mainFeedContainer{
         font-family: arial;
         width: 30%;
-        max-height: 40em;
+        height: 40em;
         position: static;
         margin: auto;
         width: 70%;

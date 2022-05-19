@@ -21,13 +21,21 @@ const Feed = () => {
   const [demographicChecked, setDemographicChecked] = useState(false);
   const [geographicChecked, setGeographicChecked] = useState(false);
 
+  let categories = [];
+
   useEffect(() => {
     const exact_match = false;
+
+    const formData = {
+      keyword: keyword,
+      exact_match: exact_match,
+      categories: categories
+    }
 
     const getData = async () => {
       const response = await axios.post(
         PLACEHOLDER_URL,
-        JSON.stringify({ keyword, category, exact_match }),
+        JSON.stringify(formData),
         {
           headers: { "Content-Type": "application/json" },
         }
@@ -36,7 +44,7 @@ const Feed = () => {
       console.log(response.data)
     };
     getData();
-  }, [category, keyword]);
+  }, []);
 
   const searchFilter = data
     .filter((el) => {
@@ -62,7 +70,7 @@ const Feed = () => {
       if (category === "") {
         return el;
       } 
-      else if (category === "financial") {
+      else if (category === "Financial") {
         return el;
       }
     })
@@ -82,7 +90,7 @@ const Feed = () => {
     if (category === "") {
       return el;
     } 
-    else if (category === "demographic") {
+    else if (category === "Demographic") {
       return el;
     }
   })
@@ -102,7 +110,7 @@ const Feed = () => {
     if (category === "") {
       return el;
     } 
-    else if (category === "geographic") {
+    else if (category === "Geographic") {
       return el;
     }
   })
@@ -121,28 +129,29 @@ const Feed = () => {
   };
 
   const handleFinancialCheck = () => {
-    setCategory("")
+    categories.pop("Financial");
+    console.log(categories);
     setFinancialChecked(false);
     if (!financialChecked) {
-      setCategory("financial");
+      categories.push("Financial")
       setFinancialChecked(true);
     }
   };
 
   const handleDemographicCheck = () => {
-    setCategory("")
+    categories.pop("Demographic");
     setDemographicChecked(false);
     if (!demographicChecked) {
-      setCategory("demographic");
+      categories.push("Demographic")
       setDemographicChecked(true);
     }
   };
 
   const handleGeographicCheck = () => {
-    setCategory("")
+    categories.pop("Geographic");
     setGeographicChecked(false);
     if (!geographicChecked) {
-      setCategory("geographic");
+      categories.push("Geographic")
       setGeographicChecked(true);
     }
   };
@@ -153,6 +162,7 @@ const Feed = () => {
       <div className="tatalacopii">
         <div className="mainContainerParent">
           <div className="mainFilterContainer">
+            <div className="stickyDiv">
             <div className="searchBar">
               <SearchBar
                 placeholder="search chart..."
@@ -186,6 +196,7 @@ const Feed = () => {
                   Geographic
                 </label>
               </form>
+             </div>
             </div>
           </div>
           <div className="mainFeedContainer">
