@@ -22,16 +22,13 @@ const Feed = () => {
   const [demographicChecked, setDemographicChecked] = useState(false);
   const [geographicChecked, setGeographicChecked] = useState(false);
 
-  // let categories = [];
-
   useEffect(() => {
     const exact_match = false;
-
     const formData = {
       keyword: keyword,
       exact_match: exact_match,
-      categories: categories
-    }
+      categories: categories,
+    };
 
     const getData = async () => {
       const response = await axios.post(
@@ -42,14 +39,56 @@ const Feed = () => {
         }
       );
       setData(response.data);
-      console.log(response.data)
+      console.log(response.data);
     };
     getData();
-  }, [keyword, categories]);
+  }, [financialChecked, demographicChecked, geographicChecked]);
+
+  const handleFinancialCheck = () => {
+    if (!financialChecked) {
+      categories.push("financial");
+      console.log(categories);
+      setCategories(categories);
+      setFinancialChecked(true);
+    }
+    if (financialChecked) {
+      categories.splice(categories.indexOf("financial"), 1);
+      console.log(categories);
+      setFinancialChecked(false);
+    }
+  };
+
+  const handleDemographicCheck = () => {
+    if (!demographicChecked) {
+      categories.push("Demographic");
+      setCategories(categories);
+      console.log(categories);
+      setDemographicChecked(true);
+    }
+    if (demographicChecked) {
+      categories.splice(categories.indexOf("Demographic"), 1);
+      console.log(categories);
+      setDemographicChecked(false);
+    }
+  };
+
+  const handleGeographicCheck = () => {
+    if (!geographicChecked) {
+      categories.push("Geographic");
+      console.log(categories);
+      setCategories(categories);
+      setGeographicChecked(true);
+    }
+    if (geographicChecked) {
+      categories.splice(categories.indexOf("Geographic"), 1);
+      setGeographicChecked(false);
+      console.log(categories);
+    }
+  };
 
   const searchFilter = data
     .filter((el) => {
-      if (keyword == "") {
+      if (keyword === "") {
         return el;
       } else if (el.postName.toLowerCase().includes(keyword.toLowerCase())) {
         return el;
@@ -65,97 +104,70 @@ const Feed = () => {
       );
     });
 
-  const financialFilter =
-    data
-    .filter((el) => {
-      if (category === "") {
-        return el;
-      } 
-      else if (category === "Financial") {
-        return el;
-      }
-    })
-    .map((el) => {
-      return (
-        <FeedContent
-          feedName={el.postName}
-          feedUser={el.postUser}
-          feedDate={el.postDate}
-        />
-      );
-    });
+  // const financialFilter = () => {
+  //   data
+  //     .filter((el) => {
+  //       if (category === "") {
+  //         return el;
+  //       } else if (category === "Financial") {
+  //         return el;
+  //       }
+  //     })
+  //     .map((el) => {
+  //       return (
+  //         <FeedContent
+  //           feedName={el.postName}
+  //           feedUser={el.postUser}
+  //           feedDate={el.postDate}
+  //         />
+  //       );
+  //     });
+  // };
 
-  const demographicFilter =
-  data
-  .filter((el) => {
-    if (category === "") {
-      return el;
-    } 
-    else if (category === "Demographic") {
-      return el;
-    }
-  })
-  .map((el) => {
-    return (
-      <FeedContent
-        feedName={el.postName}
-        feedUser={el.postUser}
-        feedDate={el.postDate}
-      />
-    );
-  });
+  // const demographicFilter = () => {
+  //   data
+  //     .filter((el) => {
+  //       if (categories === "") {
+  //         return el;
+  //       } else if (categories === "Demographic") {
+  //         console.log(categories);
+  //         return el;
+  //       }
+  //     })
+  //     .map((el) => {
+  //       return (
+  //         <FeedContent
+  //           feedName={el.postName}
+  //           feedUser={el.postUser}
+  //           feedDate={el.postDate}
+  //         />
+  //       );
+  //     });
+  // };
 
-  const geographicFilter =
-  data
-  .filter((el) => {
-    if (category === "") {
-      return el;
-    } 
-    else if (category === "Geographic") {
-      return el;
-    }
-  })
-  .map((el) => {
-    return (
-      <FeedContent
-        feedName={el.postName}
-        feedUser={el.postUser}
-        feedDate={el.postDate}
-      />
-    );
-  });
+  // const geographicFilter = () => {
+  //   data
+  //     .filter((el) => {
+  //       if (categories === "") {
+  //         return el;
+  //       } else if (categories === "Geographic") {
+  //         return el;
+  //       }
+  //     })
+  //     .map((el) => {
+  //       return (
+  //         <FeedContent
+  //           feedName={el.postName}
+  //           feedUser={el.postUser}
+  //           feedDate={el.postDate}
+  //         />
+  //       );
+  //     });
+  // };
 
   const handleChange = (event) => {
     setKeyword(event.target.value);
   };
-
-  const handleFinancialCheck = () => {
-    setFinancialChecked(false);
-    setCategories("");
-    if (!financialChecked) {
-      setCategories("Financial");
-      setFinancialChecked(true);
-    }
-  };
-
-  const handleDemographicCheck = () => {
-    setDemographicChecked(false);
-    setCategories("");
-    if (!demographicChecked) {
-      setCategories("Demographic");
-      setDemographicChecked(true);
-    }
-  };
-
-  const handleGeographicCheck = () => {
-    setGeographicChecked(false);
-    setCategories("");
-    if (!geographicChecked) {
-      setCategories("Geographic");
-      setGeographicChecked(true);
-    }
-  };
-
 
   return (
     <div className="buniculutata">
@@ -163,44 +175,44 @@ const Feed = () => {
         <div className="mainContainerParent">
           <div className="mainFilterContainer">
             <div className="stickyDiv">
-            <div className="searchBar">
-              <SearchBar
-                placeholder="search chart..."
-                onChange={handleChange}
-              />
-            </div>
-            <div className="checkboxList">
-              <form>
-                <label>
-                  <input
-                    type="checkbox"
-                    id="checkboxID"
-                    onClick={handleFinancialCheck}
-                  />
-                  Financial
-                </label>
-                <label>
-                  <input
-                    type="checkbox"
-                    id="checkboxID"
-                    onClick={handleDemographicCheck}
-                  />
-                  Demographic
-                </label>
-                <label>
-                  <input
-                    type="checkbox"
-                    id="checkboxID"
-                    onClick={handleGeographicCheck}
-                  />
-                  Geographic
-                </label>
-              </form>
-             </div>
+              <div className="searchBar">
+                <SearchBar
+                  placeholder="search chart..."
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="checkboxList">
+                <form>
+                  <label>
+                    <input
+                      type="checkbox"
+                      id="checkboxID"
+                      onClick={handleFinancialCheck}
+                    />
+                    Financial
+                  </label>
+                  <label>
+                    <input
+                      type="checkbox"
+                      id="checkboxID"
+                      onClick={handleDemographicCheck}
+                    />
+                    Demographic
+                  </label>
+                  <label>
+                    <input
+                      type="checkbox"
+                      id="checkboxID"
+                      onClick={handleGeographicCheck}
+                    />
+                    Geographic
+                  </label>
+                </form>
+              </div>
             </div>
           </div>
           <div className="mainFeedContainer">
-            <div className="lista">{(financialChecked) ? financialFilter : searchFilter}</div>
+            <div className="lista">{searchFilter}</div>
           </div>
         </div>
       </div>
