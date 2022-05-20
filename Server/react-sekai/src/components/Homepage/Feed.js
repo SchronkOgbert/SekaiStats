@@ -21,6 +21,7 @@ const Feed = () => {
   const [financialChecked, setFinancialChecked] = useState(false);
   const [demographicChecked, setDemographicChecked] = useState(false);
   const [geographicChecked, setGeographicChecked] = useState(false);
+  const [healthChecked, setHealthChecked]= useState(false);
 
   useEffect(() => {
     const exact_match = false;
@@ -42,7 +43,7 @@ const Feed = () => {
       console.log(response.data);
     };
     getData();
-  }, [financialChecked, demographicChecked, geographicChecked]);
+  }, [financialChecked, demographicChecked, geographicChecked, healthChecked]);
 
   const handleFinancialCheck = () => {
     if (!financialChecked) {
@@ -86,6 +87,21 @@ const Feed = () => {
     }
   };
 
+
+  const handleHealthCheck = () => {
+    if (!healthChecked) {
+      categories.push("Health");
+      setCategories(categories);
+      console.log(categories);
+      setHealthChecked(true);
+    }
+    if (healthChecked) {
+      categories.splice(categories.indexOf("Health"), 1);
+      console.log(categories);
+      setHealthChecked(false);
+    }
+  };
+
   const searchFilter = data
     .filter((el) => {
       if (keyword === "") {
@@ -103,67 +119,6 @@ const Feed = () => {
         />
       );
     });
-
-  // const financialFilter = () => {
-  //   data
-  //     .filter((el) => {
-  //       if (category === "") {
-  //         return el;
-  //       } else if (category === "Financial") {
-  //         return el;
-  //       }
-  //     })
-  //     .map((el) => {
-  //       return (
-  //         <FeedContent
-  //           feedName={el.postName}
-  //           feedUser={el.postUser}
-  //           feedDate={el.postDate}
-  //         />
-  //       );
-  //     });
-  // };
-
-  // const demographicFilter = () => {
-  //   data
-  //     .filter((el) => {
-  //       if (categories === "") {
-  //         return el;
-  //       } else if (categories === "Demographic") {
-  //         console.log(categories);
-  //         return el;
-  //       }
-  //     })
-  //     .map((el) => {
-  //       return (
-  //         <FeedContent
-  //           feedName={el.postName}
-  //           feedUser={el.postUser}
-  //           feedDate={el.postDate}
-  //         />
-  //       );
-  //     });
-  // };
-
-  // const geographicFilter = () => {
-  //   data
-  //     .filter((el) => {
-  //       if (categories === "") {
-  //         return el;
-  //       } else if (categories === "Geographic") {
-  //         return el;
-  //       }
-  //     })
-  //     .map((el) => {
-  //       return (
-  //         <FeedContent
-  //           feedName={el.postName}
-  //           feedUser={el.postUser}
-  //           feedDate={el.postDate}
-  //         />
-  //       );
-  //     });
-  // };
 
   const handleChange = (event) => {
     setKeyword(event.target.value);
@@ -206,6 +161,14 @@ const Feed = () => {
                       onClick={handleGeographicCheck}
                     />
                     Geographic
+                  </label>
+                  <label>
+                    <input
+                      type="checkbox"
+                      id="checkboxID"
+                      onClick={handleHealthCheck}
+                    />
+                    Health
                   </label>
                 </form>
               </div>
