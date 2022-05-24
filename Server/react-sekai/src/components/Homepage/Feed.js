@@ -21,7 +21,7 @@ const Feed = () => {
   const [financialChecked, setFinancialChecked] = useState(false);
   const [demographicChecked, setDemographicChecked] = useState(false);
   const [geographicChecked, setGeographicChecked] = useState(false);
-  const [healthChecked, setHealthChecked]= useState(false);
+  const [healthChecked, setHealthChecked] = useState(false);
 
   useEffect(() => {
     const exact_match = false;
@@ -87,7 +87,6 @@ const Feed = () => {
     }
   };
 
-
   const handleHealthCheck = () => {
     if (!healthChecked) {
       categories.push("Health");
@@ -126,54 +125,56 @@ const Feed = () => {
 
   return (
     <div className="buniculutata">
-      <div className="tatalacopii">
-        <div className="mainContainerParent">
-          <div className="mainFilterContainer">
-            <div className="stickyDiv">
-              <div className="searchBar">
-                <SearchBar
-                  placeholder="search chart..."
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="checkboxList">
-                <form>
-                  <label>
-                    <input
-                      type="checkbox"
-                      id="checkboxID"
-                      onClick={handleFinancialCheck}
-                    />
-                    Financial
-                  </label>
-                  <label>
-                    <input
-                      type="checkbox"
-                      id="checkboxID"
-                      onClick={handleDemographicCheck}
-                    />
-                    Demographic
-                  </label>
-                  <label>
-                    <input
-                      type="checkbox"
-                      id="checkboxID"
-                      onClick={handleGeographicCheck}
-                    />
-                    Geographic
-                  </label>
-                  <label>
-                    <input
-                      type="checkbox"
-                      id="checkboxID"
-                      onClick={handleHealthCheck}
-                    />
-                    Health
-                  </label>
-                </form>
-              </div>
+      <div className="tataLaFilter">
+        <div className="mainFilterContainer">
+          <div className="stickyDiv">
+            <div className="searchBar">
+              <SearchBar
+                placeholder="search chart..."
+                onChange={handleChange}
+              />
+            </div>
+            <div className="checkboxList">
+              <form>
+                <label>
+                  <input
+                    type="checkbox"
+                    id="checkboxID"
+                    onClick={handleFinancialCheck}
+                  />
+                  Financial
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    id="checkboxID"
+                    onClick={handleDemographicCheck}
+                  />
+                  Demographic
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    id="checkboxID"
+                    onClick={handleGeographicCheck}
+                  />
+                  Geographic
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    id="checkboxID"
+                    onClick={handleHealthCheck}
+                  />
+                  Health
+                </label>
+              </form>
             </div>
           </div>
+        </div>
+      </div>
+      <div className="tatalacopii">
+        <div className="mainContainerParent">
           <div className="mainFeedContainer">
             <div className="lista">{searchFilter}</div>
           </div>
@@ -182,13 +183,5 @@ const Feed = () => {
     </div>
   );
 };
-
-// Cookies.set("postTitle", "post");
-// Cookies.set("postUser", "post");
-
-// Cookies.set("postBody", "lorem30");
-// Cookies.set("postDate", "4/15/2022");
-
-// Cookies.set("embeddedHTML", "<h1>EMBEDDED HTML<h1/>");
 
 export default Feed;

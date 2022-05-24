@@ -1,9 +1,10 @@
 :root {
-  --primary: #32b5dd;
+  --primary: #00c3ff;
 }
 
 .btn {
-  padding: 8px 20px;
+  padding: 10px 35px;
+  font-size: 15px;
   border-radius: 4px;
   outline: none;
   border: none;
@@ -11,9 +12,11 @@
 }
 
 .btn:hover {
-  padding: 8px 20px;
-  transition: all 0.3s ease-out;
-  background: rgb(107, 214, 238);
+  padding: 10px 35px;
+  font-size: 15px;
+  border-radius: 4px;
+  transition: all 0.8s ease-in-out;
+  background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255,255,255, 0.3));
   color: #2d5ec7;
   transition: 250ms;
 }

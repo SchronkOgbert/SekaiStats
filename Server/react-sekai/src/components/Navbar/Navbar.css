@@ -1,28 +1,24 @@
 *{
-  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+  text-decoration: none;
 }
 
 .NavbarItems {
-  background: linear-gradient(
-    90deg,
-    rgb(255, 255, 255) 0%,
-    rgb(225, 225, 227) 100%
-  );
+  background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.8), rgba(255,255,255, 0.4));
   height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
+  font-family: 'Barlow', sans-serif;
 }
 
 .navbar-logo {
-  color: black;
+  font-family: 'Barlow', sans-serif;
+  color: rgb(0, 0, 0);
   justify-self: start;
   margin-left: 20px;
   cursor: pointer;
-  
 }
-
 
 .nav-menu {
   display: grid;
@@ -36,20 +32,19 @@
   
 }
 
-
 .nav-links {
+  font-family: 'Barlow', sans-serif;
   display: flex;
   color: black;
   margin: 3em;
   text-decoration: none;
-  padding: 0.5rem 1rem;
-  ;
+  padding: 0.3em 1.2em;
   
 }
 
 .nav-links:hover {
-  background-color: #32b5dd;
-  border-radius: 4px;
+  background-color: rgba(3, 213, 255, 0.746);
+  border-radius: 10px;
   transition: all 0.2s ease-out;
   text-decoration: none;
 }

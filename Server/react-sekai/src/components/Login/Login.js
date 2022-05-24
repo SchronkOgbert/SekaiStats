@@ -12,6 +12,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import Cookies from "js-cookie";
+import "./Login.css";
 
 const LOGIN_URL = "/Login/Response";
 
@@ -91,44 +92,48 @@ const Login = () => {
         <div>
           <Navbar />
           <Background />
-          <div className="base-container">
-            <p
-              ref={errRef}
-              className={errMsg ? "errmsg" : "offscreen"}
-              aria-live="assertive"
-            >
-              {errMsg}
-            </p>
-            <div className="header">Login</div>
-            <div className="form">
-              <div className="form-group">
-                <label htmlFor="username">Username</label>
-                <input
-                  type="text"
-                  id="username"
-                  ref={userRef}
-                  autoComplete="off"
-                  onChange={(e) => setUser(e.target.value)}
-                  value={user}
-                  required
-                />
+          <div className="tatalabase">
+            <div className="base-container">
+              <p
+                ref={errRef}
+                className={errMsg ? "errmsg" : "offscreen"}
+                aria-live="assertive"
+              >
+                {errMsg}
+              </p>
+              <div className="header">Login</div>
+              <div className="form">
+                <div className="form-group">
+                  <label htmlFor="username">Username</label>
+                  <input
+                    type="text"
+                    id="username"
+                    ref={userRef}
+                    autoComplete="off"
+                    onChange={(e) => setUser(e.target.value)}
+                    value={user}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="password">Password</label>
+                  <input
+                    type="password"
+                    id="password"
+                    onChange={(e) => setPwd(e.target.value)}
+                    value={pwd}
+                    required
+                  />
+                </div>
               </div>
-              <div className="form-group">
-                <label htmlFor="password">Password</label>
-                <input
-                  type="password"
-                  id="password"
-                  onChange={(e) => setPwd(e.target.value)}
-                  value={pwd}
-                  required
-                />
+              <div className="footer">
+                <Button onClick={handleClick}>Login</Button>
+                <div className="footer-text">
+                  <p>Don't have an account? </p>
+                  <a href="/Register">Register here!</a>
+                </div>
               </div>
             </div>
-            <div className="footer">
-              <Button onClick={handleClick}>Login</Button>
-            </div>
-            Don't have an account?
-            <a href="/Register">Register here!</a>
           </div>
         </div>
       )}

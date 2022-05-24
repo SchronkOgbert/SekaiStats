@@ -5,38 +5,50 @@
 .buniculutata{
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 .tatalacopii{
     width: 1000px;
-    padding: 50px;
+    padding-top: 50px;
+    margin-left: 100px;
+    display: flex;
 }
 
+
 .mainContainerParent{
-    display: flex;
-    background-color: rgba(255, 255, 255);
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255,255,255, 0.3));
     overflow-y: auto;
     overflow-x: hidden;
+    width: 700px;
     border-radius: 10px;
-    scrollbar-width: none;
     box-shadow: 10px 10px 10px 10px rgba(36, 64, 75, 0.1);
-
 }
 
 
 .mainFeedContainer{
+    margin-top: 10px;
     font-family: arial;
-    height: 60em;
+    height: 40em;
     position: static;
     margin: auto;
-    width: 70%;
 }
 
 .mainFilterContainer{
     margin-top: 2%;
     margin-left: 10%;
-    width: 25%;
+    height: auto;
+}
+
+.tataLaFilter{
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255,255,255, 0.3));
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-radius: 10px;
+    margin-top: 3.2rem;
+    height: 45rem;
+    box-shadow: 10px 10px 10px 10px rgba(36, 64, 75, 0.1);
+    width: 300px;
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255,255,255, 0.3));
 }
 
 label{
@@ -59,12 +71,12 @@ label{
 
 .searchBar{
     margin-top: 20%;
+    margin-left: -15%;
 }
 
-@media only screen and ( max-height: 1080px ) {
+/* @media only screen and ( max-height: 1080px ) {
     .mainFeedContainer{
         font-family: arial;
-        width: 30%;
         height: 40em;
         position: static;
         margin: auto;
@@ -72,4 +84,4 @@ label{
         transform: rotate(360deg);
         transition-duration: 2s;
     }
-}
+} */
