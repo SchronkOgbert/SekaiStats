@@ -1,4 +1,7 @@
 from datetime import datetime
+
+from cryptography.utils import deprecated
+
 from .security import hash_string
 from django.http import HttpResponse
 import mysql.connector
@@ -188,6 +191,40 @@ def go_to_post(request):
     # for url in urlpatterns:
     #     if(url[''])
     return render(request, target, post_data)
+
+@csrf_exempt
+def make_post(request):
+    try:
+        db_conn = db_handler.get_connection(
+            db_handler.DEFAULT_USER, db_handler.DEFAULT_PASSWORD)
+        db_cursor = db_conn.cursor()
+    except mysql.connector.Error as err:
+        print('Sql error: ', err)
+        return HttpResponse(3)
+    try:
+        data = json.load(request)
+        print(data)
+    except json.JSONDecodeError as err:
+        print('JSON error: ', err)
+        return HttpResponse(3)
+    try:
+        post_name = data['postName']
+        post_user = data['postUser']
+        post_link = data['postLink']
+        post_text_body = data['postTextBody']
+        post_categories = data['postCategories']
+        post_data_source = data['postDataSource']
+        db_cursor.callproc(
+            'make_post', [post_name, post_user, post_link, post_text_body, post_categories, post_data_source])
+        db_conn.commit()
+    except mysql.connector.Error as err:
+        print('Sql error: ', err)
+        return HttpResponse(3)
+    results = []
+    for i in db_cursor.stored_results():
+        results.append(json.dumps(i.fetchone()))
+    print(results)
+    return HttpResponse(results)
 
 
 # from urls import urlpatterns
