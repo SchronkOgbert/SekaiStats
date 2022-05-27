@@ -19,6 +19,10 @@ const CreatePost = () => {
   const [success, setSuccess] = useState(false);
 
   useEffect(() => {
+
+  }, []);
+
+  const handleSubmit = () => {
     const text_body = "text_body";
     const data_source = "data_source_link";
 
@@ -43,11 +47,10 @@ const CreatePost = () => {
       console.log(response.data);
     };
 
-    getData();
-  }, []);
-
-  const handleSubmit = () => {
-    console.log("Submitted new post");
+    getData().then(r =>
+    {
+      console.log("Submitted new post");
+    });
   };
 
   return (
