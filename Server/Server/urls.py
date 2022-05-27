@@ -31,7 +31,6 @@ urlpatterns = [
     path('Homepage/Feed/Get', views.search_posts),
     path('manifest.json/', TemplateView.as_view(template_name='manifest.json')),
     path('Post/Load', views.go_to_post),
-    path('Post/Create'),
-    path('/CreatePost', TemplateView.as_view(template_name='manifest.json')),
+    path('CreatePost', TemplateView.as_view(template_name='index.html')),
     path('Post/Make', views.make_post),
 ]

@@ -212,7 +212,7 @@ def make_post(request):
         post_user = data['postUser']
         post_link = data['postLink']
         post_text_body = data['postTextBody']
-        post_categories = data['postCategories']
+        post_categories = json.dumps(data['postCategories'])
         post_data_source = data['postDataSource']
         db_cursor.callproc(
             'make_post', [post_name, post_user, post_link, post_text_body, post_categories, post_data_source])
