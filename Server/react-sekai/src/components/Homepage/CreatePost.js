@@ -18,15 +18,18 @@ const CreatePost = () => {
   const [postLink, setPostLink] = useState("");
   const [success, setSuccess] = useState(false);
 
-  useEffect(() => {
+  // useEffect(() => {}, []);
+
+  const handleSubmit = () => {
     const text_body = "text_body";
     const data_source = "data_source_link";
 
+    setPostCategories(["Health"]);
     const formData = {
-      postName: postName,
+      postName: "",
       postUser: "",
       postLink: postLink,
-      postTextBody: text_body,
+      postTextBody: "espanuel",
       postCategories: postCategories,
       postDataSource: data_source,
     };
@@ -39,15 +42,12 @@ const CreatePost = () => {
           headers: { "Content-Type": "application/json" },
         }
       );
+      console.log("marinel");
       setData(response.data);
       console.log(response.data);
     };
-
-    getData();
-  }, []);
-
-  const handleSubmit = () => {
     console.log("Submitted new post");
+    getData();
   };
 
   return (

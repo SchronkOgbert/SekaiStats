@@ -192,6 +192,7 @@ def go_to_post(request):
     #     if(url[''])
     return render(request, target, post_data)
 
+
 @csrf_exempt
 def make_post(request):
     try:
@@ -214,6 +215,8 @@ def make_post(request):
         post_text_body = data['postTextBody']
         post_categories = json.dumps(data['postCategories'])
         post_data_source = data['postDataSource']
+        db_cursor.execute(f'select parse_categories({post_categories});')
+        post_categories = db_cursor.fetchone()
         db_cursor.callproc(
             'make_post', [post_name, post_user, post_link, post_text_body, post_categories, post_data_source])
         db_conn.commit()
