@@ -28,7 +28,7 @@ const CreatePost = () => {
 
     const formData = {
       postName: postName,
-      postUser: "",
+      postUser: Cookies.get('username'),
       postLink: postLink,
       postTextBody: text_body,
       postCategories: postCategories,
