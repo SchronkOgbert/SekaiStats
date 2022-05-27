@@ -14,6 +14,7 @@ import "./App.css";
 import Post from "./components/Homepage/Post";
 import { UserContext } from "./context/userContext";
 import Test from "./components/Homepage/Test";
+import CreatePost from "./components/Homepage/CreatePost";
 
 function App() {
   return (
@@ -27,6 +28,8 @@ function App() {
             <Route path="/Login" element={<Login />} />
             <Route path="/Homepage" element={<Homepage />} />
             <Route path="/Register/Response" element={<Homepage />} />
+            <Route path="/CreatePost" element={<CreatePost />} />
+            <Route path="/Post/Make" element={<CreatePost />} />
             {/* <Route path="/Post/:postName" element={<Test />} /> */}
           </Routes>
         </Router>

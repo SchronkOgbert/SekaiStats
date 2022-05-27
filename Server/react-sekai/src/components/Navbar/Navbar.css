@@ -20,15 +20,18 @@
   cursor: pointer;
 }
 
+p{
+  
+}
 .nav-menu {
   display: grid;
-  grid-template-columns: repeat(5, auto);
+  grid-template-columns: repeat(6, auto);
   grid-gap: 15px;
   list-style: none;
   text-align: center;
   width: 70vw;
   justify-content: end;
-  margin-right: 3rem;
+  margin-right: 2rem;
   
 }
 
@@ -36,10 +39,16 @@
   font-family: 'Barlow', sans-serif;
   display: flex;
   color: black;
-  margin: 3em;
+  margin: 7em;
   text-decoration: none;
   padding: 0.3em 1.2em;
   
+}
+
+#USER{
+  font-family: 'Barlow', sans-serif;
+  position: fixed;
+  margin-left: 73rem;
 }
 
 .nav-links:hover {

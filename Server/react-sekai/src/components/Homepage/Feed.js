@@ -2,6 +2,12 @@ import React from "react";
 import "./Feed.css";
 import FeedContent from "./FeedContent";
 import { Button } from "../Button";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import { useRef, useState, useEffect, useContext } from "react";
 import axios from "../../api/axios";
 import AuthContext from "../../context/authProvider";
@@ -169,6 +175,11 @@ const Feed = () => {
                   Health
                 </label>
               </form>
+            </div>
+            <div className="createPost">
+              <a href="/CreatePost">
+                <Button>Create Post</Button>
+              </a>
             </div>
           </div>
         </div>

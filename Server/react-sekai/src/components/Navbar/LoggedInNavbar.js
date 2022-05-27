@@ -44,7 +44,7 @@ const LoggedInNavbar = () => {
           );
         })}
       </ul>
-      <p>User: {username}</p>
+      <p id="USER">User: {username}</p>
       <a href="/Login">
         <Button onClick={handleClick}>Log out</Button>
       </a>

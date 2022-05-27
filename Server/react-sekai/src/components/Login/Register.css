@@ -9,11 +9,12 @@
     flex-direction: column;
     align-items: center;
     min-width: 500px;
-    height: 700px;
+    box-shadow: 10px 10px 10px 10px rgba(36, 64, 75, 0.1);
+    min-height: 700px;
     margin-top: 7rem;
     background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.95), rgba(255,255,255, 0.7));
     border-radius: 15px;
-    width: fit-content;
+
   }
   
   .header {
@@ -24,9 +25,6 @@
   
   .form-group {
     margin-top: 3em;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
     border-radius: 20px;
   }
   
@@ -34,15 +32,16 @@
     font-family: 'Barlow', sans-serif;
     font-size: 23px;
   }
-  
+
   input {
     margin-top: 6px;
     height: 37px;
     padding: 0px;
     font-size: 16px;
     border-radius: 5px;
+    box-shadow: 5px 5px 5px 5px rgba(36, 64, 75, 0.05);
   }
-  
+
   .footer {
     display: flex;
     flex-direction: column;
@@ -87,7 +86,7 @@
   
   .offscreen {
     position: absolute;
-    left: -9999px;
+    display: none;
   }
   
   .hide {
@@ -96,4 +95,5 @@
   
   .instructions {
     margin-top: 10px;
+    font-size: 15px;
   }

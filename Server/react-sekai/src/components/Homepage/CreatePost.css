@@ -1,0 +1,37 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.tataLaCreatePostContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5%;
+}
+
+.createPostContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255,255,255, 0.3));
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 900px;
+    height: 600px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px 10px rgba(36, 64, 75, 0.1);
+}
+
+.createPostTitle{
+    font-size: 40px;
+    margin-top: -2em;
+}
+
+.newFormGroup{
+    margin-top: 3em;
+}
+.newPostFooter{
+    margin-top: 5em;
+}

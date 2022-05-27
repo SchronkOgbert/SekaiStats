@@ -129,7 +129,7 @@ const Login = () => {
               <div className="footer">
                 <Button onClick={handleClick}>Login</Button>
                 <div className="footer-text">
-                  <p>Don't have an account? </p>
+                  <p>Don't have an account?</p>
                   <a href="/Register">Register here!</a>
                 </div>
               </div>

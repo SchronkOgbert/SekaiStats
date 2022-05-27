@@ -126,6 +126,7 @@ const Register = () => {
                 <input
                   type="text"
                   id="username"
+                  placeholder="Username..."
                   ref={userRef}
                   autoComplete="off"
                   onChange={(e) => setUser(e.target.value)}
@@ -164,6 +165,7 @@ const Register = () => {
                 </label>
                 <input
                   type="password"
+                  placeholder="Password..."
                   id="password"
                   onChange={(e) => setPwd(e.target.value)}
                   value={pwd}
@@ -203,6 +205,7 @@ const Register = () => {
                 </label>
                 <input
                   type="password"
+                  placeholder="Confirm Password..."
                   id="confirm_pwd"
                   onChange={(e) => setMatchPwd(e.target.value)}
                   value={matchPwd}
@@ -231,8 +234,12 @@ const Register = () => {
               >
                 Register
               </Button>
-              <div className="alreadyRegistered">Already have an account?</div>
-              <a href="/Login">Login here!</a>
+              <div className="footer-text">
+                <div className="alreadyRegistered">
+                  Already have an account?
+                </div>
+                <a href="/Login">Login here!</a>
+              </div>
             </div>
           </div>
         </div>
