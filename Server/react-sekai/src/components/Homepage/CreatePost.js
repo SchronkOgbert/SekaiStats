@@ -18,7 +18,9 @@ const CreatePost = () => {
   const [postLink, setPostLink] = useState("");
   const [success, setSuccess] = useState(false);
 
-  // useEffect(() => {}, []);
+  useEffect(() => {
+
+  }, []);
 
   const handleSubmit = () => {
     const text_body = "text_body";
@@ -26,8 +28,8 @@ const CreatePost = () => {
 
     setPostCategories(["Health"]);
     const formData = {
-      postName: "",
-      postUser: "",
+      postName: postName,
+      postUser: Cookies.get('username'),
       postLink: postLink,
       postTextBody: "espanuel",
       postCategories: postCategories,
@@ -46,8 +48,11 @@ const CreatePost = () => {
       setData(response.data);
       console.log(response.data);
     };
-    console.log("Submitted new post");
-    getData();
+
+    getData().then(r =>
+    {
+      console.log("Submitted new post");
+    });
   };
 
   return (
