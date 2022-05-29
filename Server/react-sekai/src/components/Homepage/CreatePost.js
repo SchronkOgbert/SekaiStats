@@ -18,9 +18,7 @@ const CreatePost = () => {
   const [postLink, setPostLink] = useState("");
   const [success, setSuccess] = useState(false);
 
-  useEffect(() => {
-
-  }, []);
+  useEffect(() => {}, []);
 
   const handleSubmit = () => {
     const text_body = "text_body";
@@ -29,7 +27,7 @@ const CreatePost = () => {
     setPostCategories(["Health"]);
     const formData = {
       postName: postName,
-      postUser: Cookies.get('username'),
+      postUser: Cookies.get("username"),
       postLink: postLink,
       postTextBody: "espanuel",
       postCategories: postCategories,
@@ -49,8 +47,7 @@ const CreatePost = () => {
       console.log(response.data);
     };
 
-    getData().then(r =>
-    {
+    getData().then((r) => {
       console.log("Submitted new post");
     });
   };
@@ -69,8 +66,8 @@ const CreatePost = () => {
                 <input
                   type="text"
                   id="newPostName"
-                  // onChange={(e) => setPostName(e.target.value)}
-                  // value={newPostName}
+                  onChange={(e) => setPostName(e.target.value)}
+                  value={postName}
                   autoComplete="off"
                   required
                 />
@@ -78,8 +75,8 @@ const CreatePost = () => {
                 <input
                   type="text"
                   id="PostCategory"
-                  // onChange={(e) => setPostCategories(e.target.value)}
-                  // value={newPostCategory}
+                  onChange={(e) => setPostCategories(e.target.value)}
+                  value={postCategories}
                   autoComplete="off"
                   required
                 />
@@ -87,8 +84,8 @@ const CreatePost = () => {
                 <input
                   type="text"
                   id="PostLink"
-                  // onChange={(e) => setPostLink(e.target.value)}
-                  // value={newPostLink}
+                  onChange={(e) => setPostLink(e.target.value)}
+                  value={postLink}
                   autoComplete="off"
                   required
                 />

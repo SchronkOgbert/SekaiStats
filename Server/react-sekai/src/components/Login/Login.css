@@ -11,14 +11,15 @@
   min-width: 500px;
   height: 600px;
   margin-top: 7rem;
-  background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.95), rgba(255,255,255, 0.7));
+  background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255,255,255, 0.3));
   border-radius: 15px;
   width: fit-content;
 }
 
 .header {
-  font-family: 'Barlow', sans-serif;
+  font-family: arial;
   margin-top: 70px;
+  font-weight: bold;
   font-size: 50px;
 }
 
@@ -33,6 +34,7 @@
 label {
   font-family: 'Barlow', sans-serif;
   font-size: 23px;
+  font-weight: bold;
 }
 
 input {
@@ -41,6 +43,10 @@ input {
   padding: 0px;
   font-size: 16px;
   border-radius: 5px;
+}
+
+.form-group > input {
+  width: 350px;
 }
 
 .footer {
@@ -75,6 +81,9 @@ input {
   margin-bottom: 0.5rem;
 }
 
+.footer > Button {
+  padding: 10px 50px;
+}
 .invalid {
   color: red;
   margin-left: 0.25rem;

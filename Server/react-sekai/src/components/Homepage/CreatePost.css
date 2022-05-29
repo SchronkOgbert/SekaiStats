@@ -1,9 +1,11 @@
 * {
     padding: 0;
+    font-family: arial;
     margin: 0;
 }
 
 .tataLaCreatePostContainer{
+    font-family: arial;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -11,6 +13,7 @@
 }
 
 .createPostContainer{
+    font-family: arial;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -18,19 +21,24 @@
     background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255,255,255, 0.3));
     overflow-y: auto;
     overflow-x: hidden;
-    width: 900px;
+    width: 700px;
     height: 600px;
     border-radius: 10px;
     box-shadow: 10px 10px 10px 10px rgba(36, 64, 75, 0.1);
 }
 
 .createPostTitle{
+    font-weight: bold;
     font-size: 40px;
-    margin-top: -2em;
+    margin-top: 0em;
 }
 
 .newFormGroup{
     margin-top: 3em;
+}
+
+.newFormGroup > input {
+    width: 350px;
 }
 .newPostFooter{
     margin-top: 5em;

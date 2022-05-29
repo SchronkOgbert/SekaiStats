@@ -42,21 +42,23 @@ const Post = () => {
     };
     getData();
   }, []);
-
+  //42:10
   return (
     <div>
       <Background />
       <LoggedInNavbar />
-      <div className="tatalapostdata">
-        <div className="postData">
-          <div className="text">
-            <div className="postName">{data[0]}</div>
-            <div className="postUser">{data[1]}</div>
-            <div className="postDate">{data[4]}</div>
-            <div className="postBody">{data[3]}</div>
-          </div>
-          <div className="iframediv">
-            <iframe height="750" src={data[2]}></iframe>
+      <div className="mainulamain">
+        <div className="tatalapostdata">
+          <div className="postData">
+            <div className="iframediv">
+              <iframe height="780" src={data[2]}></iframe>
+            </div>
+            <div className="source">
+              <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley">
+                Sursa:
+                https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley
+              </a>
+            </div>
           </div>
         </div>
       </div>
