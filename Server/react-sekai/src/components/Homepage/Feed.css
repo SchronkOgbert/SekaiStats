@@ -8,10 +8,8 @@
 }
 
 .tatalacopii{
-    width: 1000px;
     padding-top: 50px;
     margin-left: 100px;
-    display: flex;
 }
 
 .createPost{
@@ -22,18 +20,38 @@
     background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255,255,255, 0.3));
     overflow-y: auto;
     overflow-x: hidden;
-    width: 700px;
+    scrollbar-color: rgb(62, 197, 224) white;
+    scrollbar-width: thin;
+    width: 1200px;
     border-radius: 10px;
     box-shadow: 10px 10px 10px 10px rgba(36, 64, 75, 0.1);
 }
 
+.mainContainerParent::-webkit-scrollbar{
+    background-color: rgb(255, 255, 255);
+}
+
+.mainContainerParent::-webkit-scrollbar-thumb{
+    background-color: rgb(29, 176, 235);
+    border-radius: 20px;
+    border: 3px solid rgb(255, 255, 255);
+}
+
+.mainContainerParent::-webkit-scrollbar-corner{
+    border-radius: 20px;
+    border: 3px solid orange;
+}
 
 .mainFeedContainer{
     margin-top: 10px;
     font-family: arial;
-    height: 40em;
+    height: 41.8em;
     position: static;
     margin: auto;
+}
+
+.mainFeedContainer:hover{
+    color: red;
 }
 
 .mainFilterContainer{

@@ -18,8 +18,7 @@
   font-size: 15px;
   border-radius: 10px;
   transition: all 0.8s ease-in-out;
-  background: linear-gradient(to right bottom, rgba(111, 255, 245, 0.7), rgba(0, 221, 255, 0.3));
-  color: #2d5ec7;
+  background: rgba(28, 171, 228, 0.737);
   transition: 500ms;
 }
 

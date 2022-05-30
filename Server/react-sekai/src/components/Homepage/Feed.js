@@ -15,7 +15,7 @@ import Cookies from "js-cookie";
 import api from "../../api/axios";
 import SearchBar from "../Searchbar/SearchBar";
 
-const PLACEHOLDER_URL = "/Homepage/Feed/Get";
+const SEARCH_URL = "/Homepage/Feed/Get";
 
 const Feed = () => {
   const { setAuth } = useContext(AuthContext);
@@ -23,6 +23,7 @@ const Feed = () => {
   const [keyword, setKeyword] = useState("");
   const [category, setCategory] = useState("");
   const [categories, setCategories] = useState([]);
+  const [isShown, setIsShown] = useState(false);
 
   const [financialChecked, setFinancialChecked] = useState(false);
   const [demographicChecked, setDemographicChecked] = useState(false);
@@ -38,13 +39,9 @@ const Feed = () => {
     };
 
     const getData = async () => {
-      const response = await axios.post(
-        PLACEHOLDER_URL,
-        JSON.stringify(formData),
-        {
-          headers: { "Content-Type": "application/json" },
-        }
-      );
+      const response = await axios.post(SEARCH_URL, JSON.stringify(formData), {
+        headers: { "Content-Type": "application/json" },
+      });
       setData(response.data);
       console.log(response.data);
     };
@@ -121,6 +118,8 @@ const Feed = () => {
           feedName={el.postName}
           feedUser={el.postUser}
           feedDate={el.postDate}
+          feedCategories={el.postCategories}
+          feedDescription={el.postDescription}
         />
       );
     });
@@ -191,11 +190,11 @@ const Feed = () => {
           </div>
         </div>
       </div>
-      <div className="tatalacont3">
+      {/* <div className="tatalacont3">
         <div className="mainCont3Parent">
           <div className="mainFeed3Container"></div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

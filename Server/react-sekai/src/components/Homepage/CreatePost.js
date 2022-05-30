@@ -42,7 +42,6 @@ const CreatePost = () => {
           headers: { "Content-Type": "application/json" },
         }
       );
-      console.log("marinel");
       setData(response.data);
       console.log(response.data);
     };
@@ -80,7 +79,7 @@ const CreatePost = () => {
                   autoComplete="off"
                   required
                 />
-                <label htmlFor="PostLink">Post Link</label>
+                <label htmlFor="PostLink">Report Link</label>
                 <input
                   type="text"
                   id="PostLink"

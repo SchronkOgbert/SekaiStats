@@ -54,3 +54,24 @@
   transition: all 0.2s ease-out;
   text-decoration: none;
 }
+
+.tatalatitle{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbarTitle{
+  margin: 25px;
+  font-size: 33px;
+  font-weight: bold;
+  padding: 20 0 0 20;
+}
+
+.navbarItems {
+  background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.8), rgba(255,255,255, 0.4));
+  height: 80px;
+  font-size: 1.6rem;
+  font-family: 'Barlow', sans-serif;
+}

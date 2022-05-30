@@ -18,3 +18,5 @@ export const MenuItemsLogged = [
     cName: "nav-links",
   },
 ];
+
+export const MenuItemsPost = [{}];
