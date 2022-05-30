@@ -1,4 +1,7 @@
 from datetime import datetime
+
+from cryptography.utils import deprecated
+
 from .security import hash_string
 from django.http import HttpResponse
 import mysql.connector
@@ -111,7 +114,8 @@ def search_posts(request):
     try:
         keyword = data['keyword']
         exact_match = bool(data['exact_match'])
-        db_cursor.callproc('search_posts', [keyword, exact_match])
+        category = json.dumps(data['categories'])
+        db_cursor.callproc('search_posts', [keyword, category, exact_match])
         db_conn.commit()
     except mysql.connector.Error as err:
         print('Sql error: ', err)
@@ -122,12 +126,16 @@ def search_posts(request):
         dict_buffer = {
             'postName': '',
             'postUser': '',
-            'postDate': ''
+            'postDate': '',
         }
         while buffer:
             dict_buffer['postName'] = buffer[0]
             dict_buffer['postUser'] = buffer[1]
             dict_buffer['postDate'] = buffer[2]
+            dict_buffer['postDescription'] = buffer[3]
+            db_cursor.execute(f'select unparse_categories(\'{buffer[4]}\');')
+            dict_buffer['postCategories'] = json.dumps(db_cursor.fetchone()[0]).replace('"', '').replace('\\', '')
+            print('parsed categories:', dict_buffer['postCategories'])
             results.append(deepcopy(dict_buffer))
             buffer = i.fetchone()
     return HttpResponse(json.dumps(results))
@@ -160,7 +168,6 @@ def get_post(request):
         print('Sql error: ', err)
         return HttpResponse(3)
     results = []
-    print("marinel")
     for i in db_cursor.stored_results():
         results.append(json.dumps(i.fetchone()))
     print(results)
@@ -178,7 +185,8 @@ def go_to_post(request):
     target = str(data['postName']).replace(' ', '_')
     if target in post_urls:
         return redirect('target')
-    post_urls.append(path(target, TemplateView.as_view(template_name='post.html')))
+    post_urls.append(
+        path(target, TemplateView.as_view(template_name='post.html')))
     try:
         post_data = json.load(get_post(request))
     except Exception as e:
@@ -189,9 +197,48 @@ def go_to_post(request):
     return render(request, target, post_data)
 
 
+@csrf_exempt
+def make_post(request):
+    try:
+        db_conn = db_handler.get_connection(
+            db_handler.DEFAULT_USER, db_handler.DEFAULT_PASSWORD)
+        db_cursor = db_conn.cursor()
+    except mysql.connector.Error as err:
+        print('Sql error: ', err)
+        return HttpResponse(3)
+    try:
+        data = json.load(request)
+        print(data)
+    except json.JSONDecodeError as err:
+        print('JSON error: ', err)
+        return HttpResponse(3)
+    try:
+        post_name = data['postName']
+        post_user = data['postUser']
+        post_link = data['postLink']
+        post_text_body = data['postTextBody']
+        post_categories = json.dumps(data['postCategories'])
+        post_data_source = data['postDataSource']
+        print('post_categories: ', post_categories)
+        print('parsing categories')
+        print(f'select parse_categories(\'{post_categories}\');')
+        db_cursor.execute(f'select parse_categories(\'{post_categories}\');')
+        post_categories = json.dumps(db_cursor.fetchone()[0]).replace('"', '')
+        print('parsed categories:', post_categories)
+        db_cursor.callproc(
+            'make_post', [post_name, post_user, post_link, post_text_body, post_categories, post_data_source])
+        db_conn.commit()
+    except mysql.connector.Error as err:
+        print('Sql error: ', err)
+        return HttpResponse(3)
+    results = []
+    for i in db_cursor.stored_results():
+        results.append(json.dumps(i.fetchone()))
+    print(results)
+    return HttpResponse(results)
+
+
 # from urls import urlpatterns
-
-
 
 
 # print(check_login('{"usr": "user", "pwd": "password"}'))

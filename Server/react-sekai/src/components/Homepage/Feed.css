@@ -5,33 +5,111 @@
 .buniculutata{
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 .tatalacopii{
-    width: 900px;
-    padding: 50px;
+    padding-top: 50px;
+    margin-left: 100px;
 }
+
+.createPost{
+    margin-top: 2em;
+}
+
 .mainContainerParent{
-    background-color: rgba(255, 255, 255);
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255,255,255, 0.3));
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-color: rgb(62, 197, 224) white;
+    scrollbar-width: thin;
+    width: 1200px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px 10px rgba(36, 64, 75, 0.1);
+}
+
+.mainContainerParent::-webkit-scrollbar{
+    background-color: rgb(255, 255, 255);
+}
+
+.mainContainerParent::-webkit-scrollbar-thumb{
+    background-color: rgb(29, 176, 235);
+    border-radius: 20px;
+    border: 3px solid rgb(255, 255, 255);
+}
+
+.mainContainerParent::-webkit-scrollbar-corner{
+    border-radius: 20px;
+    border: 3px solid orange;
+}
+
+.mainFeedContainer{
+    margin-top: 10px;
+    font-family: arial;
+    height: 41.8em;
+    position: static;
+    margin: auto;
+}
+
+.mainFeedContainer:hover{
+    color: red;
+}
+
+.mainFilterContainer{
+    margin-top: 2%;
+    margin-left: 10%;
+    height: auto;
+}
+
+.tataLaFilter{
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255,255,255, 0.3));
     overflow-y: auto;
     overflow-x: hidden;
     border-radius: 10px;
-    scrollbar-width: none;
+    margin-top: 3.2rem;
+    margin-left: -1.3rem;
+    height: 45rem;
     box-shadow: 10px 10px 10px 10px rgba(36, 64, 75, 0.1);
-}
-.mainContainer{
-    font-family: arial;
-    width: 30%;
-    height: 45em;
-    position: static;
-    margin: auto;
-    width: 70%;
+    width: 280px;
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255,255,255, 0.3));
 }
 
-.lista{
-    display: flex;
-    flex-direction: column;
-    align-items: left;
+.tatalacont3{
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255,255,255, 0.3));
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-radius: 10px;
+    margin-top: 3.2rem;
+    margin-left: -12.3rem;
+    height: 45rem;
+    box-shadow: 10px 10px 10px 10px rgba(36, 64, 75, 0.1);
+    width: 280px;
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255,255,255, 0.3));
 }
 
+label{
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 18px;
+    margin-top: 15px;
+}
+
+.stickyDiv{
+    position: sticky;
+    top: 0;
+}
+
+#checkboxID{
+    margin-top: 0;
+    margin-right: 10px;
+}
+
+.searchBar{
+    margin-top: 20%;
+    margin-left: -15%;
+}
+
+
+.mainFeed3Container{
+    
+}

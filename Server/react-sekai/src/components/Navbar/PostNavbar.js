@@ -15,11 +15,15 @@ import "../Homepage/Feed.css";
 
 const PLACEHOLDER_URL = "/Homepage/Feed/Get";
 
-const LoggedInNavbar = () => {
+const PostNavbar = (props) => {
   const [data, setData] = useState("");
 
-  const username = Cookies.get("username");
+  let navbarTitle = "";
+  navbarTitle = Cookies.get("navbarTitle");
 
+  console.log(navbarTitle);
+
+  const username = Cookies.get("username");
   const state = { clicked: false };
 
   const handleClick = () => {
@@ -29,27 +33,18 @@ const LoggedInNavbar = () => {
   };
 
   return (
-    <nav className="NavbarItems">
-      <a href="/Homepage">
-        <h1 className="navbar-logo">Sekai Stats</h1>
-      </a>
-      <ul className={state.clicked ? "nav-menu active" : "nav-menu"}>
-        {MenuItemsLogged.map((item, index) => {
-          return (
-            <li key={index}>
-              <a className={item.cName} href={item.url}>
-                {item.title}
-              </a>
-            </li>
-          );
-        })}
-      </ul>
-      <p id="USER">User: {username}</p>
-      <a href="/Login">
-        <Button onClick={handleClick}>Log out</Button>
-      </a>
+    <nav className="navbarItems">
+      <div className="tatalatitle">
+        <a href="/Homepage">
+          <h1 className="navbar-logo">Sekai Stats</h1>
+        </a>
+        <ul className="navbarTitle">{navbarTitle}</ul>
+        <a href="/Login">
+          <Button onClick={handleClick}>Log out</Button>
+        </a>
+      </div>
     </nav>
   );
 };
 
-export default LoggedInNavbar;
+export default PostNavbar;

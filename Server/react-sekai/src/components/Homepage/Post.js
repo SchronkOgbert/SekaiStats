@@ -1,7 +1,7 @@
 import Cookies from "js-cookie";
 import React from "react";
 import Background from "../Background";
-import LoggedInNavbar from "../Navbar/LoggedInNavbar";
+import PostNavbar from "../Navbar/PostNavbar";
 import "./Post.css";
 import { Link, Router, Route, Routes } from "react-router-dom";
 import { Button } from "../Button";
@@ -17,17 +17,15 @@ const FEED_URL = "/Homepage/Feed/Get";
 const LOAD_URL = "/Post/Load";
 
 const Post = () => {
-  ///aici e problemaaa
   const [data, setData] = useState([]);
   const postName = Cookies.get("postName");
   const postUser = Cookies.get("postUser");
   const postDate = Cookies.get("postDate");
+  const postCategory = Cookies.get("postCategory");
 
-  console.log(postName);
+  console.log(JSON.stringify({ postName, postUser, postDate }));
 
   useEffect(() => {
-    console.log("marinel");
-
     const getData = async () => {
       const responseData = await axios.post(
         POST_URL,
@@ -43,20 +41,20 @@ const Post = () => {
     getData();
   }, []);
 
+  Cookies.set("navbarTitle", postName);
   return (
     <div>
       <Background />
-      <LoggedInNavbar />
-      <div className="tatalapostdata">
-        <div className="postData">
-          <div className="text">
-            <div className="postName">{data[0]}</div>
-            <div className="postUser">{data[1]}</div>
-            <div className="postDate">{data[4]}</div>
-            <div className="postBody">{data[3]}</div>
-          </div>
-          <div className="iframediv">
-            <iframe height="750" src={data[2]}></iframe>
+      <PostNavbar />
+      <div className="mainulamain">
+        <div className="tatalapostdata">
+          <div className="postData">
+            <div className="iframediv">
+              <iframe height="780" src={data[2]}></iframe>
+            </div>
+            <div className="source">
+              <a href={data[6]}>{data[6]}</a>
+            </div>
           </div>
         </div>
       </div>

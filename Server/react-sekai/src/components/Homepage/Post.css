@@ -1,31 +1,55 @@
+*{
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+}
+
 .tatalapostdata{
     width: 50%;
     margin: 0;
 }
 
+.mainulamain{
+    overflow: hidden;
+}
+
+.source > a{
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+}
+
+.source{
+    margin-top: 2em;
+}
+
+
 .text{
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
     padding: 0.5em;
-    min-height: 7.5em;
     background: linear-gradient(
-        120deg,
-        #6996f9,
-        rgb(92, 92, 252) 100%
-    );
+        90deg,
+        #82d7f0,
+        rgb(19, 147, 206) 100%
+      );
     border-radius: 1em;
+    border: solid black 1.5px;
+    box-shadow: 10px 10px 10px 10px rgba(36, 64, 75, 0.1);
 }
+
 .postData{
-    height: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 2em;
+    margin-top: -2.5em;
     width: 100%;
 }
 
 .iframediv{
     display: flex;
     flex-direction: column;
-    margin-top: 1em;
     width: 100%;
     border-radius: 1em;
 }
@@ -36,3 +60,13 @@
 .text {
     background-color: rgb(255, 255, 255);
 }
+
+
+@media only screen and ( max-height: 1080px ) {
+    .iframediv{
+        margin-top: 1em;
+        width: 90%;
+        border-radius: 1em;
+    }
+}
+

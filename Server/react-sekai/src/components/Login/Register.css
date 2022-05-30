@@ -1,0 +1,104 @@
+.tatalabase{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .base-container-reg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 500px;
+    box-shadow: 10px 10px 10px 10px rgba(36, 64, 75, 0.1);
+    max-height: 700px;
+    margin-top: 7rem;
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.95), rgba(255,255,255, 0.7));
+    border-radius: 15px;
+
+  }
+  
+  .header {
+    font-family: 'Barlow', sans-serif;
+    margin-top: 70px;
+    font-size: 50px;
+  }
+
+  .form{
+    overflow: hidden;
+    position: static;
+  }
+  
+  .form-group {
+    margin-top: 3em;
+    border-radius: 20px;
+  }
+  
+  label {
+    font-family: 'Barlow', sans-serif;
+    font-size: 23px;
+  }
+
+  input {
+    margin-top: 6px;
+    height: 37px;
+    padding: 0px;
+    font-size: 16px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px 5px rgba(36, 64, 75, 0.05);
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3em;
+    margin-bottom: 10px;
+  }
+  
+  .footer-text{
+    font-size: 18px;
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .footer-text > a{
+    font-size: 18px;
+    color: rgb(4, 112, 148);
+  }
+  .alreadyRegistered {
+    margin-bottom: 10px;
+  }
+  
+  .errmsg {
+    font-family: 'Barlow', sans-serif;
+    background-color: lightpink;
+    color: firebrick;
+    font-weight: bold;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .invalid {
+    color: red;
+    margin-left: 0.25rem;
+  }
+  
+  .valid {
+    color: limegreen;
+    margin-left: 0.25rem;
+  }
+  
+  .offscreen {
+    position: absolute;
+    display: none;
+  }
+  
+  .hide {
+    display: none;
+  }
+  
+  .instructions {
+    margin-top: 10px;
+    font-size: 15px;
+  }

@@ -1,51 +1,77 @@
+*{
+  text-decoration: none;
+}
+
 .NavbarItems {
-  background: linear-gradient(
-    90deg,
-    rgb(255, 255, 255) 0%,
-    rgb(225, 225, 227) 100%
-  );
+  background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.8), rgba(255,255,255, 0.4));
   height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
+  font-family: 'Barlow', sans-serif;
 }
 
 .navbar-logo {
-  color: black;
+  font-family: 'Barlow', sans-serif;
+  color: rgb(0, 0, 0);
   justify-self: start;
   margin-left: 20px;
   cursor: pointer;
-  
 }
-
 
 .nav-menu {
   display: grid;
-  grid-template-columns: repeat(5, auto);
+  grid-template-columns: repeat(6, auto);
   grid-gap: 15px;
   list-style: none;
   text-align: center;
   width: 70vw;
   justify-content: end;
-  margin-right: 3rem;
+  margin-right: 2rem;
   
 }
 
-
 .nav-links {
+  font-family: 'Barlow', sans-serif;
   display: flex;
   color: black;
-  margin: 3em;
+  margin: 7em;
   text-decoration: none;
-  padding: 0.5rem 1rem;
-  ;
+  padding: 0.3em 1.2em;
   
+}
+
+#USER{
+  font-family: 'Barlow', sans-serif;
+  position: fixed;
+  margin-left: 73rem;
 }
 
 .nav-links:hover {
-  background-color: #32b5dd;
-  border-radius: 4px;
+  background-color: rgba(3, 213, 255, 0.488);
+  border-radius: 5px;
   transition: all 0.2s ease-out;
   text-decoration: none;
+}
+
+.tatalatitle{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbarTitle{
+  margin: 25px;
+  font-size: 33px;
+  font-weight: bold;
+  padding: 20 0 0 20;
+}
+
+.navbarItems {
+  background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.8), rgba(255,255,255, 0.4));
+  height: 80px;
+  font-size: 1.6rem;
+  font-family: 'Barlow', sans-serif;
 }

@@ -1,25 +1,26 @@
+.tatalabase{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .base-container {
-  min-width: 45%;
-  height: 30%;
-  margin-left: 50%;
-  margin-top: 10rem;
-  background-color: rgba(255, 255, 255, 0.8);
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 20px;
+  min-width: 500px;
+  height: 600px;
+  margin-top: 7rem;
+  background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255,255,255, 0.3));
+  border-radius: 15px;
   width: fit-content;
 }
 
 .header {
+  font-family: arial;
   margin-top: 70px;
+  font-weight: bold;
   font-size: 50px;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
 }
 
 .form-group {
@@ -27,42 +28,65 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: fit-content;
   border-radius: 20px;
 }
 
 label {
+  font-family: 'Barlow', sans-serif;
   font-size: 23px;
+  font-weight: bold;
 }
 
 input {
   margin-top: 6px;
-  min-width: fit-content;
   height: 37px;
   padding: 0px;
   font-size: 16px;
   border-radius: 5px;
 }
 
+.form-group > input {
+  width: 350px;
+}
+
 .footer {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  width: fit-content;
-  margin-top: 2em;
+  margin-top: 3em;
   margin-bottom: 10px;
 }
 
+.footer-text{
+  font-size: 18px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.footer-text > a{
+  font-size: 20px;
+  color: rgb(255, 255, 255);
+}
 .alreadyRegistered {
   margin-bottom: 10px;
 }
 
 .errmsg {
+  font-family: 'Barlow', sans-serif;
   background-color: lightpink;
   color: firebrick;
   font-weight: bold;
   padding: 0.5rem;
   margin-bottom: 0.5rem;
+}
+
+.footer > Button {
+  padding: 10px 50px;
+}
+
+.footer > Button:hover {
+  padding: 10px 50px;
 }
 
 .invalid {
