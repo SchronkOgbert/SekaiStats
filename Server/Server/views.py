@@ -134,7 +134,7 @@ def search_posts(request):
             dict_buffer['postDate'] = buffer[2]
             dict_buffer['postDescription'] = buffer[3]
             db_cursor.execute(f'select unparse_categories(\'{buffer[4]}\');')
-            dict_buffer['postCategories'] = json.dumps(db_cursor.fetchone()[0]).replace('"', '')
+            dict_buffer['postCategories'] = json.dumps(db_cursor.fetchone()[0]).replace('"', '').replace('\\', '')
             print('parsed categories:', dict_buffer['postCategories'])
             results.append(deepcopy(dict_buffer))
             buffer = i.fetchone()
