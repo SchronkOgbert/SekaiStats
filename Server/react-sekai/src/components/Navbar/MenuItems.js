@@ -11,12 +11,6 @@ export const MenuItems = [
   },
 ];
 
-export const MenuItemsLogged = [
-  {
-    title: "Home",
-    url: "/Homepage",
-    cName: "nav-links",
-  },
-];
+export const MenuItemsLogged = [{}];
 
 export const MenuItemsPost = [{}];

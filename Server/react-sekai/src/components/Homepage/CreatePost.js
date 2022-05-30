@@ -27,16 +27,14 @@ const CreatePost = () => {
       alert("Error");
     } else {
       const text_body = "text_body";
-      const data_source = "data_source_link";
 
-      setPostCategories(["Health"]);
       const formData = {
         postName: postName,
         postUser: Cookies.get("username"),
         postLink: postLink,
         postTextBody: "espanuel",
         postCategories: postCategories,
-        postDataSource: data_source,
+        postDataSource: postSource,
       };
 
       const getData = async () => {
@@ -53,9 +51,8 @@ const CreatePost = () => {
 
       getData().then((r) => {
         console.log("Submitted new post");
+        navigate("/Homepage");
       });
-
-      navigate("/Homepage");
     }
   };
 
