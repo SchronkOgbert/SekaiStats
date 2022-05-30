@@ -191,6 +191,11 @@ const Feed = () => {
           </div>
         </div>
       </div>
+      <div className="tatalacont3">
+        <div className="mainCont3Parent">
+          <div className="mainFeed3Container"></div>
+        </div>
+      </div>
     </div>
   );
 };

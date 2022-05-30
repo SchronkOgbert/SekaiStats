@@ -48,7 +48,20 @@
     overflow-x: hidden;
     border-radius: 10px;
     margin-top: 3.2rem;
-    margin-left: -5.3rem;
+    margin-left: -1.3rem;
+    height: 45rem;
+    box-shadow: 10px 10px 10px 10px rgba(36, 64, 75, 0.1);
+    width: 280px;
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255,255,255, 0.3));
+}
+
+.tatalacont3{
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255,255,255, 0.3));
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-radius: 10px;
+    margin-top: 3.2rem;
+    margin-left: -12.3rem;
     height: 45rem;
     box-shadow: 10px 10px 10px 10px rgba(36, 64, 75, 0.1);
     width: 280px;
@@ -78,14 +91,7 @@ label{
     margin-left: -15%;
 }
 
-/* @media only screen and ( max-height: 1080px ) {
-    .mainFeedContainer{
-        font-family: arial;
-        height: 40em;
-        position: static;
-        margin: auto;
-        width: 70%;
-        transform: rotate(360deg);
-        transition-duration: 2s;
-    }
-} */
+
+.mainFeed3Container{
+    
+}

@@ -10,7 +10,7 @@
     align-items: center;
     min-width: 500px;
     box-shadow: 10px 10px 10px 10px rgba(36, 64, 75, 0.1);
-    min-height: 700px;
+    max-height: 700px;
     margin-top: 7rem;
     background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.95), rgba(255,255,255, 0.7));
     border-radius: 15px;
@@ -21,6 +21,11 @@
     font-family: 'Barlow', sans-serif;
     margin-top: 70px;
     font-size: 50px;
+  }
+
+  .form{
+    overflow: hidden;
+    position: static;
   }
   
   .form-group {

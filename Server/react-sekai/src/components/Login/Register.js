@@ -137,7 +137,7 @@ const Register = () => {
                   onFocus={() => setUserFocus(true)}
                   onBlur={() => setUserFocus(false)}
                 />
-                <p
+                {/* <p
                   id="uidnote"
                   className={
                     userFocus && user && !validName
@@ -149,7 +149,7 @@ const Register = () => {
                   4 to 24 characters.
                   <br />
                   Must begin with a letter.
-                </p>
+                </p> */}
               </div>
               <div className="form-group">
                 <label htmlFor="password">
@@ -175,7 +175,7 @@ const Register = () => {
                   onFocus={() => setPwdFocus(true)}
                   onBlur={() => setPwdFocus(false)}
                 />
-                <p
+                {/* <p
                   id="pwdnote"
                   className={
                     pwdFocus && !validPwd ? "instructions" : "offscreen"
@@ -189,7 +189,7 @@ const Register = () => {
                   Lowercase letters, <br /> a number and a <br /> special
                   character.
                   <br />
-                </p>
+                </p> */}
               </div>
               <div className="form-group">
                 <label htmlFor="confirm_pwd">
@@ -215,7 +215,7 @@ const Register = () => {
                   onFocus={() => setMatchFocus(true)}
                   onBlur={() => setMatchFocus(false)}
                 />
-                <p
+                {/* <p
                   id="confirmnote"
                   className={
                     matchFocus && !validMatch ? "instructions" : "offscreen"
@@ -224,7 +224,7 @@ const Register = () => {
                   <FontAwesomeIcon icon={faInfoCircle} />
                   Must match the <br />
                   first password input field.
-                </p>
+                </p> */}
               </div>
             </div>
             <div className="footer">
