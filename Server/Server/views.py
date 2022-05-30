@@ -133,6 +133,7 @@ def search_posts(request):
             dict_buffer['postUser'] = buffer[1]
             dict_buffer['postDate'] = buffer[2]
             dict_buffer['postDescription'] = buffer[3]
+            dict_buffer['postCategories'] = buffer[4]
             results.append(deepcopy(dict_buffer))
             buffer = i.fetchone()
     return HttpResponse(json.dumps(results))
