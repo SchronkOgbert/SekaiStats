@@ -8,6 +8,7 @@ import axios from "../../api/axios";
 import AuthContext from "../../context/authProvider";
 import Cookies from "js-cookie";
 import api from "../../api/axios";
+import { Link, Router, Route, Routes, useNavigate } from "react-router-dom";
 
 const createPostURL = "/Post/Make";
 
@@ -16,39 +17,46 @@ const CreatePost = () => {
   const [postName, setPostName] = useState("");
   const [postCategories, setPostCategories] = useState([]);
   const [postLink, setPostLink] = useState("");
+  const [postSource, setPostSource] = useState("");
   const [success, setSuccess] = useState(false);
 
-  useEffect(() => {}, []);
+  const navigate = useNavigate();
 
   const handleSubmit = () => {
-    const text_body = "text_body";
-    const data_source = "data_source_link";
+    if (postCategories == "") {
+      alert("Error");
+    } else {
+      const text_body = "text_body";
+      const data_source = "data_source_link";
 
-    setPostCategories(["Health"]);
-    const formData = {
-      postName: postName,
-      postUser: Cookies.get("username"),
-      postLink: postLink,
-      postTextBody: "espanuel",
-      postCategories: postCategories,
-      postDataSource: data_source,
-    };
+      setPostCategories(["Health"]);
+      const formData = {
+        postName: postName,
+        postUser: Cookies.get("username"),
+        postLink: postLink,
+        postTextBody: "espanuel",
+        postCategories: postCategories,
+        postDataSource: data_source,
+      };
 
-    const getData = async () => {
-      const response = await axios.post(
-        createPostURL,
-        JSON.stringify(formData),
-        {
-          headers: { "Content-Type": "application/json" },
-        }
-      );
-      setData(response.data);
-      console.log(response.data);
-    };
+      const getData = async () => {
+        const response = await axios.post(
+          createPostURL,
+          JSON.stringify(formData),
+          {
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+        setData(response.data);
+        console.log(response.data);
+      };
 
-    getData().then((r) => {
-      console.log("Submitted new post");
-    });
+      getData().then((r) => {
+        console.log("Submitted new post");
+      });
+
+      navigate("/Homepage");
+    }
   };
 
   return (
@@ -61,7 +69,7 @@ const CreatePost = () => {
           <div className="createPostContent">
             <div className="newForm">
               <div className="newFormGroup">
-                <label htmlFor="PostName">Post Name</label>
+                <label htmlFor="PostName">Name</label>
                 <input
                   type="text"
                   id="newPostName"
@@ -70,7 +78,7 @@ const CreatePost = () => {
                   autoComplete="off"
                   required
                 />
-                <label htmlFor="PostCategory">Post Category</label>
+                <label htmlFor="PostCategory">Category</label>
                 <input
                   type="text"
                   id="PostCategory"
@@ -79,12 +87,21 @@ const CreatePost = () => {
                   autoComplete="off"
                   required
                 />
-                <label htmlFor="PostLink">Report Link</label>
+                <label htmlFor="PostLink">Link</label>
                 <input
                   type="text"
                   id="PostLink"
                   onChange={(e) => setPostLink(e.target.value)}
                   value={postLink}
+                  autoComplete="off"
+                  required
+                />
+                <label htmlFor="PostSource">Source</label>
+                <input
+                  type="text"
+                  id="PostSource"
+                  onChange={(e) => setPostSource(e.target.value)}
+                  value={postSource}
                   autoComplete="off"
                   required
                 />
